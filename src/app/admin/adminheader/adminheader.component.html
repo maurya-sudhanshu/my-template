@@ -1,0 +1,307 @@
+<main>
+    <div class="dashboard">
+        <img src="/assets/admin/dashboard2.png" alt="">
+        <label for="dashboard">Dashboard</label>
+    </div>
+    <div class="acountdetail">
+        <div class="balance">
+            <label for="balance">Balance: {{b}}.00</label>
+        </div>
+        <div class="account" title="Accounts">
+            <img src="/assets/admin/setting.png" alt="">
+            <label for="account">Account</label>
+        </div>
+        <div id="manu2">
+            <div class="username">
+                <img src="/assets/admin/user.png" width="28px" alt="">
+                <label for="Username">{{username}}</label>
+            </div>
+            <div class="profile">
+                <img src="/assets/admin/profile.png" alt="">
+                <label for="profile">Profile</label>
+            </div>
+            <div class="payment" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <img src="/assets/admin/payment2.png" alt="">
+                <label for="payment">Payment details</label>
+            </div>
+            <div class="changepass" data-bs-toggle="modal" data-bs-target="#changepass">
+                <img src="/assets/admin/lock.png" alt="">
+                <label for="Changepass">Change Password</label>
+            </div>
+            <div class="logout">
+                <label for="logout" (click)="logout()" title="Logout" id="logout">Logout</label>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" #open tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 style="margin: 0;" class="modal-title" id="exampleModalLabel">Payment Deatils</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table style="width: 100%;">
+                    <tr>
+                        <th>Payment Method</th>
+                        <th>Account Holder Name</th>
+                        <th>Account IFSC Code(Bank Name)</th>
+                        <th>Account Number / Phone Number</th>
+                        <th>Account Type</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr *ngFor="let arr of payment;">
+                        <td>{{arr.payment_method}}</td>
+                        <td>{{arr.account_holder_name}}</td>
+                        <td>{{arr.account_ifsc_code}}<p *ngIf="arr.bankname !== ''">({{arr.bankname}})</p></td>
+                        <td>{{arr.account_phone_number}}</td>
+                        <td>{{arr.account_type}}</td>
+                        <td>{{arr.date}}</td>
+                        <td>
+                            <button mat-raised-button color="accent" *ngIf="arr.payment_method == 'IMPS'"
+                                data-bs-toggle="modal" (click)="open2(arr.id)"
+                                data-bs-target="#imps">Edit</button>
+                            <button mat-raised-button color="accent" *ngIf="arr.payment_method == 'paytm'"
+                                data-bs-toggle="modal" (click)="open2(arr.id)"
+                                data-bs-target="#paytm">Edit</button>
+                            <button mat-raised-button color="accent" *ngIf="arr.payment_method == 'phone pay'"
+                                data-bs-toggle="modal" (click)="open2(arr.id)"
+                                data-bs-target="#phonepe">Edit</button>
+                            <button mat-raised-button color="accent" *ngIf="arr.payment_method == 'google pay'"
+                                data-bs-toggle="modal" (click)="open2(arr.id)"
+                                data-bs-target="#googlepay">Edit</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal2 fade" id="imps" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+    tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form" *ngFor="let arr of new">
+                    <form method="post" [formGroup]="updatedetail" (ngSubmit)="updatedetails(updatedetail.value)">
+                        <div class="logo form-group">
+                            <img src="/assets/admin/logo_IMPS.png" id="logimg" alt="">
+                            <button hidden #closeimps data-bs-dismiss="modal">close</button>
+                            <img src="/assets/img/close1.png" title="close" width="20px" data-bs-dismiss="modal"
+                                (click)="opwn()" id="close" alt="">
+                        </div>
+                        <input type="text" formControlName="id" hidden [(ngModel)]="arr.id">
+                        <div class="username form-group">
+                            <label for="">PAYMENT METHOD</label>
+                            <input class="form-control" value="{{arr.payment_method}}" disabled type="text"
+                                placeholder="Payment Method">
+                        </div>
+                        <div class="password form-group">
+                            <label for="">ACCOUNT HOLDER NAME</label>
+                            <input class="form-control" value="{{arr.account_holder_name}}" type="text"
+                                formControlName="acountholdername" placeholder="Account holder name">
+                        </div>
+                        <div class="ussername form-group">
+                            <label for="">Bank Name</label>
+                            <input class="form-control" value="{{arr.bankname}}" type="text"
+                                formControlName="bankname" placeholder="Bank Name">
+                        </div>
+                        <div class="password form-group">
+                            <label for="">IFSC Code</label>
+                            <input class="form-control" value="{{arr.account_ifsc_code}}" type="text"
+                                formControlName="ifsccode" placeholder="IFSC Code">
+                        </div>
+                        <div class="username form-group">
+                            <label for="">ACCOUNT TYPE</label>
+                            <input class="form-control" type="text" value="{{arr.account_type}}"
+                                formControlName="accounttype" placeholder="Account type">
+                        </div>
+                        <div class="password form-group" style="margin-bottom: 5px;">
+                            <label for="">ACCOUNT/MOBILE No</label>
+                            <input class="form-control" type="number" value="{{arr.account_phone_number}}"
+                                minlength="10" maxlength="10" required formControlName="acountyamobilenumber"
+                                placeholder="Account/Mobile No">
+                        </div>
+                        <div class="remenberme form-group">
+                            <input checked type="checkbox">
+                            <span>Remember me</span>
+                        </div>
+                        <div class="button form-group">
+                            <button type="submit">Change Payment Details</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal2 fade" id="paytm" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+    tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form" *ngFor="let arr of new">
+                    <form method="post" [formGroup]="updatedetail" (ngSubmit)="updatedetails(updatedetail.value)">
+                        <div class="logo form-group">
+                            <img src="/assets/admin/logo_paytm.png" id="logimg" alt="">
+                            <button hidden #closepaytm data-bs-dismiss="modal">close</button>
+                            <img src="/assets/img/close1.png" title="close" width="20px" data-bs-dismiss="modal"
+                                (click)="opwn()" id="close" alt="">
+                        </div>
+                        <input type="text" formControlName="id" hidden [(ngModel)]="arr.id">
+                        <div class="username form-group">
+                            <label for="">PAYMENT METHOD</label>
+                            <input class="form-control" value="{{arr.payment_method}}" disabled type="text"
+                                placeholder="Payment Method">
+                        </div>
+                        <div class="password form-group">
+                            <label for="">ACCOUNT HOLDER NAME</label>
+                            <input class="form-control" value="{{arr.account_holder_name}}" type="text"
+                               placeholder="Account holder name">
+                        </div>
+                        <div class="username form-group" style="margin-bottom: 5px;">
+                            <label for="">MOBILE No</label>
+                            <input class="form-control" type="number" value="arr.account_phone_number"
+                                minlength="10" maxlength="10" required formControlName="acountyamobilenumber"
+                                placeholder="Mobile No">
+                        </div>
+                        <div class="remenberme form-group">
+                            <input checked type="checkbox">
+                            <span>Remember me</span>
+                        </div>
+                        <div class="button form-group">
+                            <button type="submit">Change Payment Details</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal2 fade" id="googlepay" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+    tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form" *ngFor="let arr of new">
+                    <form method="post" [formGroup]="updatedetail" (ngSubmit)="updatedetails(updatedetail.value)">
+                        <div class="logo form-group">
+                            <img src="/assets/admin/logo_googlepay.png" id="logimg" alt="">
+                            <button hidden #closegooglepay data-bs-dismiss="modal">close</button>
+                            <img src="/assets/img/close1.png" title="close" width="20px" data-bs-dismiss="modal"
+                                (click)="opwn()" id="close" alt="">
+                        </div>
+                        <input type="text" formControlName="id" hidden [(ngModel)]="arr.id">
+                        <div class="username form-group">
+                            <label for="">PAYMENT METHOD</label>
+                            <input class="form-control" value="{{arr.payment_method}}" disabled type="text"
+                                placeholder="Payment Method">
+                        </div>
+                        <div class="password form-group">
+                            <label for="">ACCOUNT HOLDER NAME</label>
+                            <input class="form-control" [(ngModel)]="arr.account_holder_name" type="text"
+                                formControlName="acountholdername" placeholder="Account holder name">
+                        </div>
+                        <div class="username form-group" style="margin-bottom: 5px;">
+                            <label for="">ACCOUNT/MOBILE No</label>
+                            <input class="form-control" type="number" [(ngModel)]="arr.account_phone_number"
+                                minlength="10" maxlength="10" required formControlName="acountyamobilenumber"
+                                placeholder="Account/Mobile No">
+                        </div>
+                        <div class="remenberme form-group">
+                            <input checked type="checkbox">
+                            <span>Remember me</span>
+                        </div>
+                        <div class="button form-group">
+                            <button type="submit">Change Payment Details</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal2 fade" id="phonepe" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+    tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form" *ngFor="let arr of new">
+                    <form method="post" [formGroup]="updatedetail" (ngSubmit)="updatedetails(updatedetail.value)">
+                        <div class="logo form-group">
+                            <img src="/assets/admin/logo_phonepe.png" id="logimg" alt="">
+                            <button hidden #closephonepe data-bs-dismiss="modal">close</button>
+                            <img src="/assets/img/close1.png" title="close" width="20px" data-bs-dismiss="modal"
+                                (click)="opwn()" id="close" alt="">
+                        </div>
+                        <input type="text" formControlName="id" hidden [(ngModel)]="arr.id">
+                        <div class="username form-group">
+                            <label for="">PAYMENT METHOD</label>
+                            <input class="form-control" value="{{arr.payment_method}}" disabled type="text"
+                                placeholder="Payment Method">
+                        </div>
+                        <div class="password form-group">
+                            <label for="">ACCOUNT HOLDER NAME</label>
+                            <input class="form-control" [(ngModel)]="arr.account_holder_name" type="text"
+                                formControlName="acountholdername" placeholder="Account holder name">
+                        </div>
+                        <div class="username form-group" style="margin-bottom: 5px;">
+                            <label for="">ACCOUNT/MOBILE No</label>
+                            <input class="form-control" type="number" [(ngModel)]="arr.account_phone_number"
+                                minlength="10" maxlength="10" required formControlName="acountyamobilenumber"
+                                placeholder="Account/Mobile No">
+                        </div>
+                        <div class="remenberme form-group">
+                            <input checked type="checkbox">
+                            <span>Remember me</span>
+                        </div>
+                        <div class="button form-group">
+                            <button type="submit">Change Payment Details</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal3 fade" id="changepass" #open tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog  modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form [formGroup]="adminchnagepass" (ngSubmit)="changepassword(adminchnagepass.value)" method="post">
+                    <header><img src="/assets/admin/logo_change_password.png" alt=""><img class="close"
+                            src="/assets/test/close.png" data-bs-dismiss="modal" aria-label="Close" alt=""></header>
+                    <div class="mb-3 old">
+                        <label for="exampleInputEmail1" class="new form-label">New Password</label>
+                        <div class="butt">
+                            <input matInput [type]="hide ? 'password' : 'text'" type="password"
+                                formControlName="newpassword" placeholder="Password" class="form-control">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide" type="button">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3 new">
+                        <label for="exampleInputPassword1" class="new form-label">Old Password</label>
+                        <div class="butt">
+                            <input matInput [type]="hide2 ? 'password' : 'text'" type="password"
+                                formControlName="oldpassword" placeholder="Password" class="form-control">
+                            <button mat-icon-button matSuffix (click)="hide2 = !hide2"
+                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2" type="button">
+                                <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <button [disabled]="adminchnagepass.invalid" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

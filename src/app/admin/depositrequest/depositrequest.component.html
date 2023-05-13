@@ -1,0 +1,120 @@
+<div class="table">
+    <div class="search">
+        <input type="search" class="form-control" name="search" [(ngModel)]="searchText"
+            placeholder="Search here :- Username, Mobile, Referral Code etc">
+    </div>
+    <br>
+    <table>
+        <tr>
+            <th>S.No</th>
+            <th>Username</th>
+            <th>Amount</th>
+            <th>Discription</th>
+            <th>Type</th>
+            <th>Payment Status</th>
+            <th>Date</th>
+            <th>Action</th>
+            <th>Approved/declined By</th>
+        </tr>
+        <tr *ngFor="let arr of data | filter:searchText;let i = index">
+            <td>{{i+1}}</td>
+            <td class="info">{{arr.username }}({{arr.name}})</td>
+            <td class="balance">{{arr.amount}}.0</td>
+            <td>Testing</td>
+            <td>{{arr.type}}</td>
+            <td>{{arr.payment_status}}</td>
+            <td>{{arr.date}}</td>
+            <td>
+                <button mat-raised-button data-bs-toggle="modal" (click)="getdatabyid(arr.id)" data-bs-target="#view" style="
+                padding: 0px 10px;
+            "><mat-icon>remove_red_eye</mat-icon> View</button>
+                <button mat-raised-button color="accent" *ngIf="arr.approved == 0" (click)="approved(arr.id,1,arr.amount,arr.username)" class="active">Approve</button>
+                <button mat-raised-button color="accent" *ngIf="arr.approved == 1" class="active">Approved</button>
+                <button mat-raised-button color="primary" *ngIf="arr.declined == 0" (click)="decline(arr.id)" data-bs-toggle="modal" data-bs-target="#reason" class="active">Decline</button>
+                <button mat-raised-button color="primary" *ngIf="arr.declined == 1" class="active">Declined</button>
+            </td>
+            <td>
+                <div class="self" *ngIf="arr.approved_or_denied_by == adminuser">
+                    Self
+                </div>
+                <div class="Other" *ngIf="arr.approved_or_denied_by != adminuser">
+                    {{arr.approved_or_denied_by}}
+                </div>  
+                <div class="pending" *ngIf="arr.approved_or_denied_by == ''">
+                    Pending
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="view" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title" id="staticBackdropLabel">Payment Details</h1>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+        <div class="modal-body">
+            <table *ngFor="let arr of userdata">
+                <tr>
+                    <th>Name</th>
+                    <td>{{arr.name}}</td>
+                </tr>
+                <tr>
+                    <th>User Name</th>
+                    <td>{{arr.username}}</td>
+                </tr>
+                <tr>
+                    <th>Payment Method</th>
+                    <td>{{arr.payment_method}}</td>
+                </tr>
+                <tr>
+                    <th>Account Holder Name</th>
+                    <td>{{arr.account_holder_name}}</td>
+                </tr>
+                <tr>
+                    <th>Account Ifsc Code</th>
+                    <td>{{arr.ifsc_code}}</td>
+                </tr>
+                <tr>
+                    <th>Account/Phone No</th>
+                    <td>{{arr.account_phone_number}}</td>
+                </tr>
+                <tr>
+                    <th>Type</th>
+                    <td>{{arr.type}}</td>
+                </tr>
+                <tr>
+                    <th>Amount</th>
+                    <td>{{arr.amount}}.0</td>
+                </tr>
+                <tr>
+                    <th>Attachment</th>
+                    <td><img width="100%" src='{{hostURl}}/image/{{arr.image_name}}' alt=""></td>
+                </tr>
+               </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="reason" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title" id="staticBackdropLabel">Write Reason for the Decline</h1>
+            <button type="button" class="btn-close btn-close-white" #close data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+        <div class="modal-body">
+            <form [formGroup]="declineform" (ngSubmit)="declined(declineform.value)" >
+                <div class="mb-3">
+                  <label for="reason" class="form-label">Reason</label><br>
+                  <textarea name="reason" formControlName="reason" placeholder="Type reason" id="reason" cols="30" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>

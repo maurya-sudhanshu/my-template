@@ -1,0 +1,105 @@
+.main {
+    background: url(/assets/admin/loginwall6.jpg) rgb(177, 223, 177) no-repeat
+      center center;
+    background-size: cover;
+    background-blend-mode: multiply;
+    height: 100vh;
+    position: relative;
+    padding: 20px;
+    .text {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      #logo {
+        width: 10%;
+      }
+      span {
+        font-size: 40px;
+        padding: 20px 10px 0px;
+        font-weight: 600;
+        text-shadow: rgb(14, 170, 58) 1px 0 10px;
+      }
+    }
+    .form {
+      height: 100vh;
+      width: 32vw;
+      background-color: black;
+      border-top: 5px solid #18ce18;
+      padding: 160px 5px 20px 20px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      form {
+        height: 60vh;
+        width: 30vw;
+        background-color: black;
+        border: none;
+        border-radius: 0px;
+        padding: 20px;
+        box-shadow: 1px 1px 20px #18ce18;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        .form-control {
+          background-color: #131c13;
+          border: none;
+          border-radius: 0px;
+          color: white;
+          outline: green;
+        }
+        label {
+          color: #18ce18;
+        }
+        .logo {
+          display: flex;
+          justify-content: center;
+          #logimg {
+            width: 50%;
+          }
+        }
+        .username{
+          input:focus{
+            box-shadow: none;
+          }
+        }
+        .password{
+          .butt{
+            position: relative;
+            button{
+                position: absolute;
+                top:0;
+                right:0;
+                mat-icon{
+                  color: rgb(14, 169, 14);
+                }
+              }
+            button:focus{
+                box-shadow: 0 0 0 0 green;
+            }
+        }
+        input:focus{
+          box-shadow: none;
+        }
+        }
+        .remenberme {
+          span {
+            color: grey;
+          }
+          input {
+            margin-right: 5px;
+          }
+        }
+        .button {
+          button {
+            width: 100%;
+            padding: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            border: none;
+            background-color: #109e10;
+          }
+        }
+      }
+    }
+  }
+  

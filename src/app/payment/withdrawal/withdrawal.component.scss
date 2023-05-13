@@ -1,0 +1,393 @@
+main {
+  background-color: #08111a;
+  color: white;
+  header {
+    min-width: calc(57vw + 20px);
+    display: flex;
+    background-color: #17212c;
+    color: #414f66;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+    h1 {
+      margin: 0;
+    }
+    img {
+      width: 100px;
+    }
+    .userdata {
+      display: flex;
+      img {
+        width: 40px;
+      }
+      li {
+        list-style: none;
+        color: white;
+        .profile {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          small {
+            img {
+              width: 16px;
+              border: 1px solid;
+              border-radius: 50%;
+            }
+          }
+        }
+        .dropdown-menu {
+          padding: 0.4rem 0px;
+          background-color: #17212c;
+          border: 1px solid black;
+          inset: 8px -7px auto auto !important;
+          cursor: pointer;
+          .data {
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-bottom: 9px solid #fff;
+            position: absolute;
+            top: -10px;
+            right: 28px;
+          }
+          li {
+            a {
+              color: white;
+              font-size: 15px;
+            }
+            a:hover {
+              background-color: #000;
+            }
+          }
+        }
+      }
+    }
+  }
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px 40px;
+    position: relative;
+    #button {
+      position: absolute;
+      right: 42%;
+      color: #1a1a1a;
+      bottom: 7px;
+      padding: 0px 42px;
+    }
+    .header {
+      margin-bottom: 8px;
+      span {
+        padding: 10px 10px 15px;
+        cursor: pointer;
+      }
+      .backtransfer {
+        background-color: #17212c;
+        border-radius: 5px 5px 0px 0px;
+      }
+    }
+    .main2 {
+      color: #fff;
+      display: flex;
+      ::-webkit-scrollbar {
+        width: 0px;
+      }
+      .left {
+        border-radius: 7px;
+        min-width: 33vw;
+        max-width: 33vw;
+        max-height: 400px;
+        min-height: 400px;
+        margin-right: 20px;
+        padding: 10px;
+        background-color: #17212c;
+        overflow: auto;
+        .bank {
+          .details {
+            display: flex;
+            flex-direction: column;
+            background-color: #08111a;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 5px;
+            position: relative;
+            .span1 {
+              font-size: 17px;
+              font-weight: 500;
+            }
+            .span2 {
+              font-size: 14px;
+              text-transform: uppercase;
+            }
+            .span3 {
+              font-size: 14px;
+            }
+            small {
+              font-size: 11px;
+            }
+            input {
+              position: absolute;
+              top: 14px;
+              right: 14px;
+              width: 20px;
+              height: 20px;
+            }
+            #varificationpending {
+              color: yellow;
+            }
+            #varificationverified {
+              color: green;
+            }
+            mat-icon {
+              position: absolute;
+              bottom: 16px;
+              right: 14px;
+              color: #ef0000;
+              cursor: pointer;
+            }
+          }
+        }
+        .upi {
+          .details {
+            display: flex;
+            flex-direction: column;
+            background-color: #08111a;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 5px;
+            position: relative;
+            .span1 {
+              font-size: 17px;
+              font-weight: 500;
+            }
+            .span2 {
+              font-size: 14px;
+              text-transform: uppercase;
+            }
+            .span3 {
+              font-size: 14px;
+            }
+            small {
+              font-size: 11px;
+            }
+            input {
+              position: absolute;
+              top: 14px;
+              right: 14px;
+              width: 20px;
+              height: 20px;
+            }
+            #varificationpending {
+              color: yellow;
+            }
+            #varificationverified {
+              color: green;
+            }
+            mat-icon {
+              position: absolute;
+              bottom: 5px;
+              right: 11px;
+              color: #ef0000;
+              cursor: pointer;
+              font-size: 21px;
+            }
+          }
+        }
+        .number {
+          .details {
+            display: flex;
+            flex-direction: column;
+            background-color: #08111a;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 5px;
+            position: relative;
+            .span1 {
+              font-size: 17px;
+              font-weight: 500;
+            }
+            .span2 {
+              font-size: 14px;
+              text-transform: uppercase;
+            }
+            .span3 {
+              font-size: 14px;
+            }
+            small {
+              font-size: 11px;
+            }
+            input {
+              position: absolute;
+              top: 14px;
+              right: 14px;
+              width: 20px;
+              height: 20px;
+            }
+            #varificationpending {
+              color: yellow;
+            }
+            #varificationverified {
+              color: green;
+            }
+            mat-icon {
+              position: absolute;
+              bottom: 16px;
+              right: 14px;
+              color: #ef0000;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .right {
+        padding: 5px;
+        min-width: 18vw;
+        max-width: 18vw;
+        border-radius: 8px;
+        background-color: #17212c;
+        .header {
+          padding: 7px;
+          position: relative;
+          label {
+            padding-left: 6px;
+            margin-bottom: 10px;
+          }
+          .body {
+            text-align: center;
+            label {
+              padding: 10px 35px;
+              background: #08111a;
+              border-radius: 5px;
+              margin: 2px;
+            }
+          }
+        }
+        form {
+          padding: 20px;
+          .my-form-field {
+            width: 100%;
+            mat-labe {
+              color: #fff;
+              margin-bottom: 5px;
+            }
+            mat-hint {
+              color: white;
+            }
+            input::placeholder {
+              color: rgb(170, 165, 165);
+            }
+          }
+          button {
+            margin-top: 13px;
+          }
+        }
+      }
+    }
+  }
+  .main2nd {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 20px;
+    position: relative;
+    .navdata {
+      display: flex;
+      padding-bottom: 8px;
+      mat-icon{
+        margin-right: 8px;
+      }
+      #home{
+        cursor: pointer;
+      }
+      h3 {
+        margin: 0px;
+      }
+    }
+    header {
+      display: flex;
+      padding: 0px 21px;
+      flex-direction: column;
+      align-items: flex-start;
+      .status {
+        padding: 20px 0px 10px;
+        color: rgb(188, 219, 229);
+        label {
+          margin-right: 26px;
+          color: rgb(163, 179, 213);
+          font-size: 16px;
+        }
+        .mat-radio-button ~ .mat-radio-button {
+          margin-left: 16px;
+        }
+      }
+      .date {
+        #label {
+          margin-right: 26px;
+          color: rgb(163, 179, 213);
+          font-size: 16px;
+        }
+        .my-form-field {
+          margin-bottom: 10px;
+          mat-label {
+            color: rgb(188, 219, 229);
+          }
+          mat-hint {
+            color: rgb(188, 219, 229);
+          }
+          input::placeholder {
+            color: rgb(146, 154, 159);
+          }
+        }
+        ::ng-deep .mat-datepicker-toggle {
+          color: rgb(163, 179, 213);
+          font-size: 25px;
+        }
+      }
+      .button {
+        text-align: center;
+        width: 100%;
+        #buttonsearch {
+          margin-bottom: 10px;
+          width: 75%;
+        }
+      }
+    }
+    body {
+      padding: 10px 0px;
+      background: #08111a;
+      table {
+        background-color: #17212c;
+        th {
+          margin-right: 10px;
+          margin-left: 10px;
+        }
+        mat-row,
+        mat-header-row,
+        mat-footer-row,
+        th.mat-header-cell,
+        td.mat-cell,
+        td.mat-footer-cell {
+          border-bottom-color: #c4d6fd;
+          color: #c4d6fd;
+          button {
+            padding: 0px;
+            min-width: 0px;
+            color: green;
+          }
+        }
+      }
+      mat-paginator {
+        background: #17212c;
+        margin-top: 0px;
+      }
+      ::ng-deep .mat-paginator-container {
+        color: #c4d6fd;
+        background-color: #17212c;
+        min-height: 0px;
+        margin: 2px 0px;
+      }
+    }
+  }
+}

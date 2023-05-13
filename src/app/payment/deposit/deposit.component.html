@@ -1,0 +1,157 @@
+<main *ngIf="step1st">
+    <div class="header">
+        Deposit
+        <div class="wallet">
+            <img src="/assets/test/wallet.png" alt="">
+            <label for="rupay">{{balance}}</label>
+        </div>
+    </div>
+    <div class="main">
+        <form [formGroup]="postdata" (ngSubmit)="onsubmitpre(postdata.value)">
+            <div class="input">
+                <label for="Amount">Enter Amount</label>
+                <input type="number" (keypress)="numericOnly($event)" formControlName="deposit" name="deposit"
+                    minlength="3" required placeholder="Deposit Amount">
+                <div class="condition">
+                    <label id="label1" for="min amount">Min Deposit : <span>100</span></label>
+                    <label id="label2" for="Processing">Processing : <span>15 Minutes</span></label>
+                    <label for="fee">Fee : <span>0%</span></label>
+                </div>
+            </div>
+            <div class="button">
+                <span class="btn">
+                    <button class="btn-menu" type="button" (click)="onNoClick()">Close</button>
+                </span>
+                <span class="btn new">
+                    <button class="btn-menu" type="submit" [disabled]="postdata.invalid">Deposit</button>
+                </span>
+            </div>
+        </form>
+    </div>
+</main>
+<main *ngIf="step2nd">
+    <div class="header">
+        Deposit details
+        <div class="wallet">
+            <img src="/assets/test/wallet.png" alt="">
+            <label for="rupay">{{balance}}</label>
+        </div>
+    </div>
+    <div class="main">
+        <div class="input">
+            <label for="Amount">Enter Amount</label>
+            <input value={{amount}} id="input2" disabled type="text" placeholder="Deposit Amount">
+            <div class="condition">
+                <label id="label1" for="min amount">Min Deposit : <span>100</span></label>
+                <label id="label2" for="Processing">Processing : <span>15 Minutes</span></label>
+                <label for="fee">Fee : <span>0%</span></label>
+            </div>
+        </div>
+        <hr>
+        <div class="payment">
+            <div class="header2">
+                <h2>Payment Details</h2>
+                <div class="method">
+                    <h3 [class.activedatapaytm]="paytmdetil"><img (click)="paytm()" title="Paytm" src="/assets/admin/paytm.svg" alt=""></h3>
+                    <h3 [class.activedataphonepe]="phonepedetails"><img (click)="phonepe()" title="Phone Pay" src="/assets/admin/phonepe.svg" alt=""></h3>
+                    <h3 [class.activedata]="googlepaydetail"><img (click)="googlepe()" title="Google Pay" src="/assets/admin/gpay.svg" alt=""></h3>
+                    <h3 [class.activedataimps]="impsdetail"><img (click)="imps()" title="IMPS" id="imps" src="/assets/admin/imps.png" alt=""></h3>
+                </div>
+            </div>
+            <div class="details" *ngIf="paytmdetil">
+                <div *ngFor="let arr of payment">
+                    <div class="paytmname">
+                        <label for="paytmname">Paytm Account Name :-</label>
+                        <span>{{arr.account_holder_name}}</span>
+                    </div>
+                    <div class="accounttype">
+                        <label for="acounttype">Acount Type :-</label>
+                        <span>Saving</span>
+                    </div>
+                    <div class="paytmnumber">
+                        <label for="paytmumber">Paytm Number :-</label>
+                        <span>{{arr.account_phone_number}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="details" *ngIf="phonepedetails">
+                <div *ngFor="let arr of payment">
+                    <div class="paytmname">
+                        <label for="paytmname">phonepe Account Holder Name :-</label>
+                        <span>{{arr.account_holder_name}}</span>
+                    </div>
+                    <div class="accounttype">
+                        <label for="acounttype">Acount Type :-</label>
+                        <span>Saving</span>
+                    </div>
+                    <div class="paytmnumber">
+                        <label for="paytmumber">Phonepe Number :-</label>
+                        <span>{{arr.account_phone_number}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="details" *ngIf="googlepaydetail">
+                <div *ngFor="let arr of payment">
+                    <div class="paytmname">
+                        <label for="paytmname">Google pay Name :-</label>
+                        <span>{{arr.account_holder_name}}</span>
+                    </div>
+                    <div class="accounttype">
+                        <label for="acounttype">Acount Type :-</label>
+                        <span>Saving</span>
+                    </div>
+                    <div class="paytmnumber">
+                        <label for="paytmumber">Google pay Number :-</label>
+                        <span>{{arr.account_phone_number}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="details" *ngIf="impsdetail">
+                <div *ngFor="let arr of payment">
+                    <div class="name">
+                        <label for="paytmname">Account Name :-</label>
+                        <span>{{arr.account_holder_name}}</span>
+                    </div>
+                    <div class="accounttype">
+                        <label for="acounttype">Acount Type :-</label>
+                        <span>{{arr.account_type}}</span>
+                    </div>
+                    <div class="accounttype">
+                        <label for="acounttype">Bank Name :-</label>
+                        <span>{{arr.bankname}}</span>
+                    </div>
+                    <div class="paytmname">
+                        <label for="name">IFSC Code :-</label>
+                        <span>{{arr.account_ifsc_code}}</span>
+                    </div>
+                    <div class="paytmnumber">
+                        <label for="paytmumber">Account Number :-</label>
+                        <span>{{arr.account_phone_number}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="image">
+            <label for="upload">
+                <img [src]="url" alt="">
+            </label>
+            <input type="file" (change)="onchange($event)" id="upload" hidden
+                accept="image/x-png,image/jpg,image/jpeg" />
+        </div>
+        <div class="button btn1">
+            <form [formGroup]="depositform" (ngSubmit)="depositdata()" method="post">
+                <span class="btn new upload" *ngIf="submi == false">
+                    <input type="file" (change)="onchange($event)" id="upload" formControlName="image" hidden
+                        accept="image/x-png,image/jpg,image/jpeg" />
+                    <label for="upload">Choose file</label>
+                </span>
+                <span class="btn" *ngIf="submi == true">
+                    <button class="btn-menu" type="submit">Submit</button>
+                </span>
+                <span class="btn">
+                    <button class="btn-menu" type="button" (click)="onNoClick()">Close</button>
+                </span>
+            </form>
+        </div>
+    </div>
+</main>

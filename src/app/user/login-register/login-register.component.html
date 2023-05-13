@@ -1,0 +1,220 @@
+<div class="container">
+  <img class="close" (click)="onNoClick()" src="/assets/img/close.png" alt="">
+  <div class="buttons logi" *ngIf="login">
+    <label class="btn loginbn" (click)="loginn()">LOGIN</label>
+    <label class="btn registerbn" (click)="registerr()">REGISTER</label>
+  </div>
+  <div class="buttons regi" *ngIf="register">
+    <label class="btn loginbn" (click)="loginn()">LOGIN</label>
+    <label class="btn registerbn" (click)="registerr()">REGISTER</label>
+  </div>
+  <div class="sub-container">
+    <!--login-->
+    <div class="login" *ngIf="login">
+      <br>
+      <div class="social-1">
+        <h3>Login Directly With</h3>
+        <img src="/assets/img/fb2.png" alt="">
+        <img src="/assets/img/insta.png" alt="">
+        <img src="/assets/img/linkedin.png" alt="">
+        <img src="/assets/img/twitter2.png" alt="">
+      </div>
+      <br>
+      <hr>
+      <br>
+      <div class="form-login">
+        <form [formGroup]="loginuser" (ngSubmit)="loginuserdata(loginuser.value)">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="trans" required placeholder="Enter Your Username/mobile number"
+              formControlName="username" autofocus>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+              <div class="butt">
+                <input matInput [type]="hide ? 'password' : 'text'" type="password" class="form-control" required formControlName="password"
+                placeholder="Enter your Password" id="exampleInputPassword1">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide" type="button">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </div>
+          </div>
+          <div class="term-condition">
+            <p><input type="checkbox" checked> &nbsp;Remember Me</p>
+            <label for="forgetpassword" (click)="forgetpass()">Forget Password?</label>
+          </div>
+          <span class="submit-btn">
+            <button type="submit" [disabled]="loginuser.invalid" class="btn">LOGIN</button>
+          </span>
+        </form>
+      </div>
+    </div>
+    <!-- register -->
+    <div class="register" *ngIf="register">
+      <br>
+      <div class="social-1">
+        <h3>Register On GUruBway</h3>
+        <img src="/assets/img/fb2.png" alt="">
+        <img src="/assets/img/insta.png" alt="">
+        <img src="/assets/img/linkedin.png" alt="">
+        <img src="/assets/img/twitter2.png" alt="">
+      </div>
+      <hr style="margin: 10px 0;">
+      <div class="form-login">
+
+        <!-- Send Otp         -->
+        <form [formGroup]="registertion" (ngSubmit)="sendotp(registertion.value)">
+          <div class="mb-3">
+            <label for="useranme" class="form-label">Username</label>
+            <input type="text" (keypress)="useranmedetail($event)" required class="form-control" id="useranme" placeholder="Enter username"
+              formControlName="username" required>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputmobile1" class="form-label">Name</label>
+              <input type="text" id="exampleInputname" class="form-control" placeholder="Enter Your name"
+                formControlName="name" required>
+            </div>
+          <div class="mb-3">
+            <label for="exampleInputmobile1" class="form-label">Mobile No</label>
+            <input type="number" (keypress)="numericOnly($event)" id="exampleInputmobile1" class="form-control" placeholder="Enter Your mobile no"
+              formControlName="mobile" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <div class="butt">
+              <input matInput [type]="hide ? 'password' : 'text'" type="password" class="form-control" required formControlName="password"
+              placeholder="Enter your Password" id="exampleInputPassword1">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide" type="button">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputreferral1" class="form-label">Referral Code</label>
+          <input type="text" id="exampleInputreferral1" class="form-control" placeholder="Enter referral code"
+            formControlName="referral" required>
+        </div>
+          <div class="term-condition">
+            <p><input type="checkbox" checked> &nbsp;Remember Me</p>
+          </div>
+          <span class="submit-btn">
+            <button type="submit" [disabled]="registertion.invalid" class="btn">REGISTER</button>
+          </span>
+        </form>
+      </div>
+    </div>
+    <!-- verifyotp -->
+    <div class="otpveryfication" *ngIf="otp">
+      <h3 style="text-align: center;">OTP Verification</h3>
+      <div class="form-group">
+        <form [formGroup]="sendotpdata" (ngSubmit)="datasubmit(sendotpdata.value)">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Enter OTP</label>
+            <input type="number" class="form-control" required placeholder="Enter Your OTP" formControlName="otp"
+              autofocus>
+          </div>
+          <div class="detail term-condition">
+            <label for="details">Number :- {{mobile}}</label>
+            <label for="resendotp" (click)="resend()">Resend OTP</label>
+          </div>
+          <span class="submit-btn">
+            <button type="submit" [disabled]="sendotpdata.invalid" class="btn">Send OTP</button>
+          </span>
+        </form>
+      </div>
+    </div>
+    <!-- resendotp -->
+    <div class="otpveryfication" *ngIf="resendotp">
+      <h3 style="text-align: center;">Resend OTP</h3>
+      <div class="form-group">
+        <form [formGroup]="resendotpp" (ngSubmit)="resendo(resendotpp.value)">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Mobile Number</label>
+            <input type="number" class="form-control" placeholder="Enter Your mobile Number" formControlName="mobile"
+              autofocus>
+          </div>
+          <div class="detail term-condition">
+            <label for="details">Number :- {{mobile}}</label>
+          </div>
+          <span class="submit-btn">
+            <button type="submit" class="btn">Resend OTP</button>
+          </span>
+        </form>
+      </div>
+    </div>
+
+    <!--Forget Password-->
+    <div class="forget" *ngIf="forget">
+      <h2 style="text-align: center;">Reset your password</h2>
+      <div class="form-group">
+        <form [formGroup]="forgetpassword" (ngSubmit)="forgett(forgetpassword.value)">
+          <div class="mb-3 form-group">
+            <label for="exampleInputEmail1" class="form-label">Mobile Number</label>
+            <input type="number" class="form-control" placeholder="Enter Your mobile Number" formControlName="mobile"
+              autofocus>
+          </div>
+          <span class="submit-btn">
+            <button type="submit" class="btn">Send OTP</button>
+          </span>
+        </form>
+      </div>
+    </div>
+    <div class="newpass" *ngIf="newpass">
+      <h2 style="text-align: center;">Enter OTP</h2>
+      <div class="form-group">
+        <form [formGroup]="forgetsendottp" (ngSubmit)="forgetcheckotp(forgetsendottp.value)">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Verify OTP</label>
+            <input type="number" class="form-control" placeholder="Enter Your OTP" formControlName="otp" autofocus>
+          </div>
+          <div class="detail term-condition">
+            <label for="details">Number :- {{mobile}}</label>
+            <label for="resendotp" (click)="frogetresend()">Resend OTP</label>
+          </div>
+          <span class="submit-btn">
+            <button type="submit" class="btn">Send OTP</button>
+          </span>
+        </form>
+      </div>
+    </div> 
+     <div class="otpveryfication" *ngIf="forgetresendotp">
+      <h3 style="text-align: center;">Resend OTP</h3>
+      <div class="form-group">
+        <form [formGroup]="resendotpp" (ngSubmit)="forgetotpresend(resendotpp.value)">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Mobile Number</label>
+            <input type="number" class="form-control" placeholder="Enter Your mobile Number" formControlName="mobile"
+              autofocus>
+          </div>
+          <div class="detail term-condition">
+            <label for="details">Number :- {{mobile}}</label>
+          </div>
+          <span class="submit-btn">
+            <button type="submit" class="btn">Resend OTP</button>
+          </span>
+        </form>
+      </div>
+    </div>
+    <div class="genratepass" *ngIf="genratepass">
+      <h2 style="text-align: center;">Generate New Password</h2>
+      <form [formGroup]="genpass" (ngSubmit)="newpassword(genpass.value)">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Enter new Password</label>
+          <div class="butt">
+            <input matInput [type]="hide ? 'password' : 'text'" type="password" class="form-control" required formControlName="password"
+            placeholder="Enter your Password" id="exampleInputPassword1">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide" type="button">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </div>
+        </div>
+        <span class="submit-btn">
+          <button type="submit" class="btn">Submit</button>
+        </span>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,411 @@
+.card-class {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
+  .card1 {
+    overflow: hidden;
+    margin: 10px;
+    width: 400px;
+    height: 250px;
+    border-radius: 8px;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+    }
+    button {
+      border: 1px solid white;
+      display: none;
+      background-color: rgb(54, 8, 160);
+      border: 1px solid white;
+      display: none;
+      color: white;
+      border-radius: 8px;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 90px;
+      height: 40px;
+    }
+  }
+  .card1:hover {
+    button {
+      display: block;
+    }
+    img {
+      transform: scale(1.08);
+    }
+  }
+  .card2 {
+    overflow: hidden;
+    margin: 10px;
+    width: 400px;
+    height: 250px;
+    border-radius: 8px;
+    position: relative;
+    position: relative;
+    img {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+    }
+    button {
+      border: none;
+      background-color: rgb(54, 8, 160);
+      border: 1px solid white;
+      display: none;
+      color: white;
+      border-radius: 8px;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 90px;
+      height: 40px;
+    }
+  }
+  .card2:hover {
+    button {
+      display: block;
+    }
+    img {
+      transform: scale(1.08);
+    }
+  }
+  .card3 {
+    overflow: hidden;
+    margin: 10px;
+    width: 400px;
+    height: 250px;
+    border-radius: 8px;
+    position: relative;
+    position: relative;
+    img {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+    }
+    button {
+      border: none;
+      background-color: rgb(54, 8, 160);
+      border: 1px solid white;
+      display: none;
+      color: white;
+      border-radius: 8px;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 90px;
+      height: 40px;
+    }
+  }
+  .card3:hover {
+    button {
+      display: block;
+    }
+    img {
+      transform: scale(1.08);
+    }
+  }
+  .card4 {
+    overflow: hidden;
+    margin: 10px;
+    width: 400px;
+    height: 250px;
+    border-radius: 8px;
+    position: relative;
+    img {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+    }
+    button {
+      border: none;
+      background-color: rgb(54, 8, 160);
+      border: 1px solid white;
+      display: none;
+      color: white;
+      border-radius: 8px;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 90px;
+      height: 40px;
+    }
+  }
+  .card4:hover {
+    button {
+      display: block;
+    }
+    img {
+      transform: scale(1.08);
+    }
+  }
+  .card5 {
+    overflow: hidden;
+    margin: 10px;
+    width: 400px;
+    height: 250px;
+    border-radius: 8px;
+    position: relative;
+    position: relative;
+    img {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+    }
+    button {
+      border: none;
+      background-color: rgb(54, 8, 160);
+      border: 1px solid white;
+      display: none;
+      color: white;
+      border-radius: 8px;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 90px;
+      height: 40px;
+    }
+  }
+  .card5:hover {
+    button {
+      display: block;
+    }
+    img {
+      transform: scale(1.08);
+    }
+  }
+  .card6 {
+    overflow: hidden;
+    margin: 10px;
+    width: 400px;
+    height: 250px;
+    border-radius: 8px;
+    position: relative;
+    position: relative;
+    img {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+    }
+    button {
+      border: none;
+      background-color: rgb(54, 8, 160);
+      border: 1px solid white;
+      display: none;
+      color: white;
+      border-radius: 8px;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 90px;
+      height: 40px;
+    }
+  }
+  .card6:hover {
+    button {
+      display: block;
+    }
+    img {
+      transform: scale(1.08);
+    }
+  }
+  .card7 {
+    overflow: hidden;
+    margin: 10px;
+    width: 400px;
+    height: 250px;
+    border-radius: 8px;
+    position: relative;
+    background-size: cover;
+    background-image: url(/assets/img/bookie7.jpg);
+    position: relative;
+    img {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+    }
+    .card1:hover button {
+      display: block;
+    }
+    button {
+      border: none;
+      background-color: rgb(54, 8, 160);
+      border: 1px solid white;
+      display: none;
+      color: white;
+      border-radius: 8px;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 90px;
+      height: 40px;
+    }
+  }
+  .card7:hover {
+    button {
+      display: block;
+    }
+    img {
+      transform: scale(1.08);
+    }
+  }
+  .card8 {
+    overflow: hidden;
+    margin: 10px;
+    width: 400px;
+    height: 250px;
+    border-radius: 8px;
+    position: relative;
+    position: relative;
+    img {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+    }
+    button {
+      border: none;
+      background-color: rgb(54, 8, 160);
+      border: 1px solid white;
+      display: none;
+      color: white;
+      border-radius: 8px;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 90px;
+      height: 40px;
+    }
+  }
+  .card8:hover {
+    button {
+      display: block;
+    }
+    img {
+      transform: scale(1.08);
+    }
+  }
+  .card9 {
+    overflow: hidden;
+    margin: 10px;
+    width: 400px;
+    height: 250px;
+    border-radius: 8px;
+    position: relative;
+    position: relative;
+    img {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+    }
+    button {
+      border: none;
+      background-color: rgb(54, 8, 160);
+      border: 1px solid white;
+      display: none;
+      color: white;
+      border-radius: 8px;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 90px;
+      height: 40px;
+    }
+  }
+  .card9:hover {
+    button {
+      display: block;
+    }
+    img {
+      transform: scale(1.08);
+    }
+  }
+  .card10 {
+    overflow: hidden;
+    margin: 10px;
+    width: 400px;
+    height: 250px;
+    border-radius: 8px;
+    position: relative;
+    position: relative;
+    img {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+    }
+    button {
+      border: none;
+      background-color: rgb(54, 8, 160);
+      border: 1px solid white;
+      display: none;
+      color: white;
+      border-radius: 8px;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 90px;
+      height: 40px;
+    }
+  }
+  .card10:hover {
+    button {
+      display: block;
+    }
+    img {
+      transform: scale(1.08);
+    }
+  }
+}

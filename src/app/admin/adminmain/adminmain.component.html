@@ -1,0 +1,55 @@
+<div class="header">
+    <button><img class="hideshow" src="/assets/admin/arrow3.png" alt=""></button>
+    <div class="main">
+        <app-adminheader></app-adminheader>
+    </div>
+</div>
+<main>
+    <div class="left">
+        <div id="manu">
+            <div class="logo" routerLink="/admin/deshboard">
+                <img src="/assets/test/logo1.png" alt="">
+            </div>
+            <hr>
+            <div class="dashboard" routerLink="/admin/deshboard" routerLinkActive="active">
+                <img src="/assets/admin/dashboard.png" alt="" width="24px">
+                <label for="dashboard">Dashboard</label>
+            </div>
+            <div class="dashboard" routerLink="/admin/role" routerLinkActive="active">
+                <img src="/assets/admin/role.png" alt="" width="24px">
+                <label for="dashboard">Role</label>
+            </div>
+            <div class="agents" *ngIf="username == veryfyusername" routerLink="/admin/agents" routerLinkActive="active">
+                <img src="/assets/admin/admin.png" width="24px" alt="">
+                <label for="agents">Agents</label>
+            </div>
+            <div class="users" routerLink="/admin/users" routerLinkActive="active">
+                <img src="/assets/admin/group.png" alt="" width="24px">
+                <label for="users">Users</label>
+            </div>
+            <div class="request" routerLink="/admin/depositrequest" routerLinkActive="active">
+                <img src="/assets/admin/deposit.png" width="24px" alt="">
+                <label for="request">Deposit Requests</label>
+            </div>
+            <div class="request" routerLink="/admin/withdarwalrequest" routerLinkActive="active">
+                <img src="/assets/admin/withdarwal.png" width="24px" alt="">
+                <label for="request">Withdarwal Requests</label>
+            </div>
+            <div class="request" routerLink="/admin/userbankdetails" routerLinkActive="active">
+                <img src="/assets/admin/bank.png" width="24px" alt="">
+                <label for="request">User Bank Details </label>
+            </div>
+            <div class="request" routerLink="/admin/otherpayment" routerLinkActive="active">
+                <img src="/assets/admin/invoice.png" width="24px" alt="">
+                <label for="request">Other Payment Details</label>
+            </div>
+            <div class="request" routerLink="/admin/subadmin" routerLinkActive="active">
+                <img src="/assets/admin/subadmin.png" width="24px" alt="">
+                <label for="request">Sub Admins</label>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <router-outlet></router-outlet>
+    </div>
+</main>

@@ -1,0 +1,54 @@
+main {
+  #img1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  .data1 {
+    height: 250px;
+    background-color: #fff;
+    display: flex;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+  }
+  .data2 {
+    padding: 20px;
+    color: red;
+    z-index: 100;
+  }
+  .data3 {
+    padding: 20px;
+    z-index: 100;
+    background-color: #fff;
+    height: 500px;
+  }
+  .img {
+      overflow: hidden;
+      z-index: 10;
+    position: relative;
+    .img2 {
+      position: fixed;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+form{
+  background-color: #fff;
+  input{
+    color: #000;
+  }
+}
+.data{
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  
+  border-bottom: 5px solid #fff;
+}

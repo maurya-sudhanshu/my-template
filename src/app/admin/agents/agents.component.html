@@ -1,0 +1,145 @@
+<main>
+    <div class="header">
+        <div class="user">
+            <img src="" alt=""> Agents
+        </div>
+        <div class="adduser">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                +ADD</button>
+        </div>
+    </div>
+    <div class="table">
+        <div class="search">
+            <input type="search" class="form-control" name="search" [(ngModel)]="searchText"
+                placeholder="Search here :- Username, Mobile, Referral Code etc">
+        </div>
+        <br>
+        <table>
+            <tr>
+                <th>S.No</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Balance</th>
+                <th>Referral<br> code</th>
+                <th>Date</th>
+                <th>Account status<br>change</th>
+                <th>Action</th>
+                <th>Status</th>
+            </tr>
+            <tr *ngFor="let arr of data | filter:searchText;let i = index">
+                <td>{{i+1}}</td>
+                <td class="info">{{arr.admin_username }}</td>
+                <td>{{arr.admin_name}}</td>
+                <td class="balance">{{arr.balance}} <img title="Click to Add Balance" (click)="gete(arr.id)" data-bs-toggle="modal" data-bs-target="#Addbalance" src="/assets/admin/plus.png" alt=""></td>
+                <td>{{arr.referral}}</td>
+                <td>{{arr.date}}</td>
+                <td>
+                    <mat-slide-toggle *ngIf="arr.status == 0" title="Click to Inactive Account"
+                        (click)="statuschange(1,arr.admin_username)" checked>
+                    </mat-slide-toggle>
+                    <mat-slide-toggle *ngIf="arr.status == 1" title="Click to active Account"
+                        (click)="statuschange(0,arr.admin_username)"></mat-slide-toggle>
+                </td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle shadow-none" type="button"
+                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            view more
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li class="botton_border"><a class="dropdown-item">Edit User</a></li>
+                            <li class="botton_border"><a class="dropdown-item" (click)="gete(arr.id)" data-bs-toggle="modal" data-bs-target="#Addbalance">Add Amount</a></li>
+                            <li class="botton_border"><a class="dropdown-item">Profit & Loss</a></li>
+                            <li class="botton_border"><a class="dropdown-item">Change Password</a></li>
+                            <li><a class="dropdown-item" (click)="deleteaccount(arr.id,arr.admin_username)">Delete A/c</a></li>
+                        </ul>
+                    </div>
+                </td>
+                <td>
+                    <button mat-raised-button color="accent" *ngIf='arr.status == 0' id="active">Active</button>
+                    <button mat-raised-button color="primary" *ngIf='arr.status == 1'>Inactive</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</main>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form">
+                    <form [formGroup]="admingenrate" (ngSubmit)="admingenraten(admingenrate.value)" method="post">
+                        <div class="logo form-group">
+                            <img src="/assets/admin/logo_add_admin.png" id="logimg" alt="">
+                            <img src="/assets/img/close1.png" title="close" #closebutton data-bs-dismiss="modal" width="20px"
+                                id="close" alt="">
+                        </div>
+                        <div class="username form-group">
+                            <label for="">NAME</label>
+                            <input class="form-control" type="text" formControlName="name" placeholder="Name">
+                        </div>
+                        <div class="password form-group">
+                            <label for="">USERNAME</label>
+                            <input class="form-control" type="text" formControlName="username" placeholder="User Name">
+                           </div>
+                        <div class="username form-group">
+                            <label for="">MOBILE No</label>
+                            <input class="form-control" type="number" minlength="10" maxlength="10" required formControlName="mobile" placeholder="Mobile No">
+                        </div>
+                        <div class="username code form-group">
+                            <label for="">REFERRAL CODE</label>
+                            <input class="form-control" type="text" formControlName="referral" placeholder="Genrate referral code">
+                        </div>
+                        <div class="password form-group">
+                            <label for="">PASSWORD</label>
+                            <div class="butt">
+                            <input matInput [type]="hide ? 'password' : 'text'" type="password" formControlName="password" placeholder="Password" class="form-control">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                              </button>
+                            </div>
+                        </div>
+                        <div class="remenberme form-group">
+                            <input checked type="checkbox">
+                            <span>Remember me</span>
+                        </div>
+                        <div class="button form-group">
+                            <button [disabled]="admingenrate.invalid" type="submit">Genrate Agent</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="Addbalance" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form">
+                    <form [formGroup]="adminbalace" (ngSubmit)="addbalance(adminbalace.value)" method="post">
+                        <div class="logo form-group">
+                            <img src="/assets/admin/logo_add_amount.png" id="logimg" alt="">
+                            <img src="/assets/img/close1.png" title="close" #closebutton2 data-bs-dismiss="modal" width="20px"
+                                id="close" alt="">
+                        </div>
+                        <div class="password form-group">
+                            <label for="">Amount</label>
+                            <input class="form-control" type="number" formControlName="balance" placeholder="Enter Amount">
+                        </div>
+                        <div class="remenberme form-group">
+                            <input checked type="checkbox">
+                            <span>Remember me</span>
+                        </div>
+                        <div class="button form-group">
+                            <button [disabled]="adminbalace.invalid" type="submit">Add Amount</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

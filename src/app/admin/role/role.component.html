@@ -1,0 +1,174 @@
+<main *ngIf="viewhide">
+  <div class=" button_title">
+    <div class="h5">
+      <mat-icon>https</mat-icon> Roles
+    </div>
+    <button mat-raised-button color="accent" (click)="change()" class="h5"><mat-icon >add</mat-icon>Add</button>
+  </div>
+  <div class="table alternative2">
+    <div class="search">
+        <mat-form-field>
+          <mat-label>Search</mat-label>
+          <input matInput [(ngModel)]="searchText" placeholder="Search here..." #input>
+        </mat-form-field>
+    </div>
+    <table id="table">
+      <tr>
+        <th style="  width: 25px;
+          border-right: 1px solid #203156;
+          padding-right: 16px;
+          text-align: center;">S.No</th>
+        <th style="padding-left: 16px;
+          font-size: 20px;">Name</th>
+        <th style="padding-left: 16px;
+          font-size: 20px;">Display Name</th>
+        <th style="text-align: center;
+          font-weight: bold;">Actiom</th>
+      </tr>
+      <tr *ngFor="let arr of data| filter:searchText;let i = index">
+        <td style="  width: 25px;
+        border-right: 1px solid #203156;
+        padding-right: 16px;
+        text-align: center;">{{i+1}}</td>
+        <td style="padding-left: 16px;
+        font-size: 20px;">{{arr.name}}</td>
+        <td style="padding-left: 16px;
+        font-size: 20px;">{{arr.display_name}}</td>
+        <td style="text-align: center;
+        font-weight: bold;">
+          <button mat-mini-fab id="view" (click)="viewnew(arr.display_name)" aria-label="Example icon button with a plus one icon">
+            <mat-icon>remove_red_eye</mat-icon>
+          </button>
+          <button mat-mini-fab id="accent" aria-label="Example icon button with a plus one icon">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-mini-fab id="warn" (click)="deletedatabyid(arr.id)" aria-label="Example icon button with a plus one icon">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</main>
+<main *ngIf="view">
+  <div class=" button_title">
+    <div class="h5"> 
+      <mat-icon>https</mat-icon> Add Role
+    </div>
+    <button mat-raised-button color="accent" (click)="changeto()">
+      <mat-icon>list</mat-icon>Return to List
+    </button>
+  </div>
+
+  <body>
+    <div>
+      <form [formGroup]="form" (ngSubmit)="submit(form.value)">
+        <div class="example-form alternative">
+          <mat-form-field class="my-form-field">
+            <mat-label>Name</mat-label>
+            <input type="text" formControlName="name" onkeypress="return /[a-zA-Z ]/i.test(event.key)" required matInput placeholder="Enter Name">
+            <mat-error>Name is required</mat-error>
+          </mat-form-field>
+          <mat-form-field class="my-form-field">
+            <mat-label>Display Name</mat-label>
+            <input type="text" formControlName="displayname" onkeypress="return /[a-zA-Z]/i.test(event.key)" required matInput placeholder="Enter Display Name">
+            <mat-error>Display Name is required</mat-error>
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="accent" type="submit">submit</button>
+      </form>
+    </div>
+  </body>
+
+  <section class="example-section">
+    <span class="example-list-section">
+      <mat-checkbox class="example-margin" [checked]="allComplete" [color]="task.color" [indeterminate]="someComplete()"
+        (change)="setAll($event.checked)">
+        {{task.name}}
+      </mat-checkbox>
+    </span>
+    <span class="example-list-section">
+      <ul id="ul">
+        <li id="li" *ngFor="let subtask of task.subtasks">
+          <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color" (ngModelChange)="updateAllComplete()">
+            {{subtask.name}}
+            <section class="example-section2">
+              <span class="example-list-section2">
+                <ul>
+                  <li *ngFor="let arr of subtask.subtasks">
+                    <mat-checkbox (ngModelChange)="updateAllComplete2()" [(ngModel)]="arr.completed"
+                      [color]="arr.color">
+                      {{arr.name}}
+                    </mat-checkbox>
+                  </li>
+                </ul>
+              </span>
+            </section>
+          </mat-checkbox>
+        </li>
+      </ul>
+    </span>
+  </section>
+
+</main>
+<main *ngIf="viewdatavalue">
+  <div class=" button_title">
+    <div class="h5">
+      <mat-icon>https</mat-icon> View Roles
+    </div>
+    <button mat-raised-button color="accent" (click)="changeto()">
+      <mat-icon>list</mat-icon>Return to List
+    </button>
+  </div>
+
+  <body>
+    <div>
+      <form >
+        <div class="example-form alternative">
+          <mat-form-field class="my-form-field">
+            <mat-label>Name</mat-label>
+            <input type="text" disabled value="{{rolesdata.name}}" matInput placeholder="Enter Name">
+          </mat-form-field>
+          <mat-form-field class="my-form-field">
+            <mat-label>Display Name</mat-label>
+            <input type="text" disabled value="{{rolesdata.display_name}}" matInput placeholder="Enter Display Name">
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="accent" type="submit">submit</button>
+      </form>
+    </div>
+  </body>
+
+  <section *ngFor="let arr of rolesdata.subtasks" class="example-section">
+    <span class="example-list-section">
+      <mat-checkbox class="example-margin" [checked]="allComplete" [color]="task.color" [indeterminate]="someComplete()"
+        (change)="setAll($event.checked)">
+        {{task.name}}
+      </mat-checkbox>
+    </span>
+    <span class="example-list-section">
+      <ul id="ul">
+        <li id="li" *ngFor="let subtask of task.subtasks">
+          <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color" (ngModelChange)="updateAllComplete()">
+            {{subtask.name}}
+            <section class="example-section2">
+              <span class="example-list-section2">
+                <ul>
+                  <li *ngFor="let arr of subtask.subtasks">
+                    <mat-checkbox (ngModelChange)="updateAllComplete2()" [(ngModel)]="arr.completed"
+                      [color]="arr.color">
+                      {{arr.name}}
+                    </mat-checkbox>
+                  </li>
+                </ul>
+              </span>
+            </section>
+          </mat-checkbox>
+        </li>
+      </ul>
+    </span>
+  </section>
+
+</main>
+
+

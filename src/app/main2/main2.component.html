@@ -1,0 +1,513 @@
+<main data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
+    <div class="main">
+        <div [class.header_change]="header_varible" class="header">
+            <li routerLink="/about" (click)="inview(item1)">
+                About Us
+            </li>
+            <li class="li2"  (click)="inview(item2)">
+                Our Partners
+            </li>
+            <li class="li3"  (click)="inview(item3)">
+                How to Works
+            </li>
+            <img src="/assets/test/logo.png" alt="">
+            <li class="li4"  (click)="inview(item4)">
+                Celebs Love Us
+            </li>
+            <li class="li5"  (click)="inview(item5)">
+                Why Laser Book
+            </li>
+            <li class="li6"  (click)="inview(item6)">
+                Contact Us
+            </li>
+        </div>
+        <!-- [class.login_change]="login_varible" -->
+        <div class="sidebox1" >
+            <div class="left" [class.left_change]="left_varible">
+                <img src="/assets/test/arrow.png" class="hideshow" id="left" alt="">
+            </div>
+            <div class="sidebox" id="manu">
+                <div class="profile">
+                    <img src="/assets/test/profile.svg" alt="">
+                    <label for="name"> {{username}}</label>
+                </div>
+                <img title="Bank Details" (click)="bankdetails()" src="/assets/admin/bank2.png" class="bank" alt="">
+                <img title="Logout" src="/assets/test/exit.png" (click)="leave()" class="leave" alt="">
+                <div class="balance">
+                    <Label>Balance : <span>{{balance}}</span>.00</Label>
+                </div>
+                <div class="payment">
+                    <button (click)="Deposit()" title="Deposit" id="btn1">Deposit</button>
+                    <button (click)="withdrawal()" title="withdrawal">withdrawal</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img id="main" src="/assets/test/cardsmall.png" alt="">
+            <div class="caption">
+                <button>India's #1 Exchange</button>
+                <h3>GET YOUR ONLINE ID WITH THE BIGGEST</h3>
+                <h2>EXCHANGE</h2>
+                <p>NO. 1 PLATFORM FOR PROVIDING <br> ONLINE SPORTS ID</p>
+                <a class="a_id" href="#">Get Your Demo ID Now</a>
+            </div>
+            <div class="images">
+                <img id="img" src="/assets/test/cardsmall.png" alt="">
+                <div id="wrap0">
+                    <img class="si si1" src="/assets/test/s1.png" alt="">
+                    <img class="si si2" src="/assets/test/s2.png" alt="">
+                    <img class="si si3" src="/assets/test/s3.png" alt="">
+                </div>
+                <div id="wrap1">
+                    <img class="si si4" src="/assets/test/s4.png" alt="">
+                    <img class="si si5" src="/assets/test/s5.png" alt="">
+                    <img class="si si6" src="/assets/test/s6.png" alt="">
+                </div>
+                <div id="wrap2">
+                    <img class="si si7" src="/assets/test/s7.png" alt="">
+                    <img class="si si8" src="/assets/test/s81.png" alt="">
+                    <img class="si si9" src="/assets/test/s9.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="whatsapp" #item1>
+            <label for="whatsapp"><q>Whatsapp</q> us on</label>
+            <div class="button">
+                <button>+91 97 XXXXXXXX</button>
+                <button>+91 97 XXXXXXXX</button>
+                <button>+91 97 XXXXXXXX</button>
+                <button>+91 97 XXXXXXXX</button>
+            </div>
+        </div>
+        <div class="animation">
+            <img src="/assets/test/cardsmall.png" alt="" id="img1">
+            <div class="img">
+                <img src="/assets/test/bat.png" id="bat" alt="">
+                <img src="/assets/test/ball.png" alt="" id="ball">
+            </div>
+            <div class="content">
+                <div class="top">Top <q>Betting</q> Site</div>
+                <div class="title">THE BIGGEST PLATFORM FOR PROVIDING ONLINE SPORTS BETTING ID’s</div>
+                <div class="subcontent">Welcome to LaserBook, We are India’s No 1 Exchange and the First That Provide
+                    24*7 Withdrawal Facility. We offer you a genuinely unique sports betting experience. Besides, We
+                    also offer global liquidity, best industry pricing with a single click.</div>
+                <div class="buttons">
+                    <button id="button1">Whatsapp us on - +91 97 XXXXXXXX</button>
+                    <button id="button2">Get Your Demo ID Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="partnurs" #item2>
+            <img src="/assets/test/cardsmall.png" alt="" id="img">
+            <label for="Our"><q>Bond</q> Websites</label>
+            <div class="websites">
+                <div class="card c1">
+                    <div class="front">
+                        <section>
+                            <img class="lb_partner_logo" src="/assets/test/p1.png" alt="">
+                            <h4>CricketBet9</h4>
+                            <a class="a_parnter a_gdid 1" href="javascript:void(0)">Get Demo ID</a>
+                        </section>
+                    </div>
+                    <div class="back">
+                        <div class="header1">
+                            <label for="Cricketbet9" title="Go To Site">CricketBet9</label>
+                            <img data-bs-toggle="modal" data-bs-target="#reset" src="/assets/test/setting.png" alt="">
+                        </div>
+                        <section>
+                            <div class="userdetail">
+                                <label for="Username">Username : </label><span> Bookiefirst</span><br>
+                                <label for="Password">Password : </label><span> Bookie123</span>
+                            </div>
+                            <div class="button">
+                                <button title="Deposit" id="btn2">Deposit</button>
+                                <button title="withdrawal">withdrawal</button>
+                            </div>
+                            <div class="balencedetails">
+                                <div class="balance"><label for="Balance">Balance : </label><span> 450.00</span>
+                                </div>
+                                <div class="Exposure"><label for="Exposure">Exposure : </label><span> 0.00</span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="card c2">
+                    <div class="front">
+                        <section>
+                            <img class="lb_partner_logo" src="/assets/test/p5.png" alt="">
+                            <h4>Tiger Exch</h4>
+                            <a class="a_parnter a_gdid 1" href="javascript:void(0)">Get Demo ID</a>
+                        </section>
+                    </div>
+                    <div class="back">
+                        <div class="header1">
+                            <label for="TigerExch" title="Go To Site">Tiger Exch</label>
+                            <img data-bs-toggle="modal" data-bs-target="#reset" src="/assets/test/setting.png" alt="">
+                        </div>
+                        <section>
+                            <div class="userdetail">
+                                <label for="Username">Username : </label><span> Bookiefirst</span><br>
+                                <label for="Password">Password : </label><span> Bookie123</span>
+                            </div>
+                            <div class="button">
+                                <button title="Deposit" id="btn2">Deposit</button>
+                                <button title="withdrawal">withdrawal</button>
+                            </div>
+                            <div class="balencedetails">
+                                <div class="balance"><label for="Balance">Balance : </label><span> 450.00</span>
+                                </div>
+                                <div class="Exposure"><label for="Exposure">Exposure : </label><span> 0.00</span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="card c3">
+                    <div class="front">
+                        <section>
+                            <img class="lb_partner_logo" src="/assets/test/p3.png" alt="">
+                            <h4>Lotus 247</h4>
+                            <a class="a_parnter a_gdid 1" href="javascript:void(0)">Get Demo ID</a>
+                        </section>
+                    </div>
+                    <div class="back">
+                        <div class="header1">
+                            <label for="Lotus247" title="Go To Site">Lotus 247</label>
+                            <img data-bs-toggle="modal" data-bs-target="#reset" src="/assets/test/setting.png" alt="">
+                        </div>
+                        <section>
+                            <div class="userdetail">
+                                <label for="Username">Username : </label><span> Bookiefirst</span><br>
+                                <label for="Password">Password : </label><span> Bookie123</span>
+                            </div>
+                            <div class="button">
+                                <button title="Deposit" id="btn2">Deposit</button>
+                                <button title="withdrawal">withdrawal</button>
+                            </div>
+                            <div class="balencedetails">
+                                <div class="balance"><label for="Balance">Balance : </label><span> 450.00</span>
+                                </div>
+                                <div class="Exposure"><label for="Exposure">Exposure : </label><span> 0.00</span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="card c4">
+                    <div class="front">
+                        <section>
+                            <img class="lb_partner_logo" src="/assets/test/p4.png" alt="">
+                            <h4>king</h4>
+                            <a class="a_parnter a_gdid 1" href="javascript:void(0)">Get Demo ID</a>
+                        </section>
+                    </div>
+                    <div class="back">
+                        <div class="header1">
+                            <label for="king" title="Go To Site">king</label>
+                            <img data-bs-toggle="modal" data-bs-target="#reset" src="/assets/test/setting.png" alt="">
+                        </div>
+                        <section>
+                            <div class="userdetail">
+                                <label for="Username">Username : </label><span> Bookiefirst</span><br>
+                                <label for="Password">Password : </label><span> Bookie123</span>
+                            </div>
+                            <div class="button">
+                                <button title="Deposit" id="btn2">Deposit</button>
+                                <button title="withdrawal">withdrawal</button>
+                            </div>
+                            <div class="balencedetails">
+                                <div class="balance"><label for="Balance">Balance : </label><span> 450.00</span>
+                                </div>
+                                <div class="Exposure"><label for="Exposure">Exposure : </label><span> 0.00</span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="card c5">
+                    <div class="front">
+                        <section>
+                            <img class="lb_partner_logo" src="/assets/test/p2.png" alt="">
+                            <h4>Lord Exch</h4>
+                            <a class="a_parnter a_gdid 1" href="javascript:void(0)">Get Demo ID</a>
+                        </section>
+                    </div>
+                    <div class="back">
+                        <div class="header1">
+                            <label for="LordExch" title="Go To Site">Lord Exch</label>
+                            <img data-bs-toggle="modal" data-bs-target="#reset" src="/assets/test/setting.png" alt="">
+                        </div>
+                        <section>
+                            <div class="userdetail">
+                                <label for="Username">Username : </label><span> Bookiefirst</span><br>
+                                <label for="Password">Password : </label><span> Bookie123</span>
+                            </div>
+                            <div class="button">
+                                <button title="Deposit" id="btn2">Deposit</button>
+                                <button title="withdrawal">withdrawal</button>
+                            </div>
+                            <div class="balencedetails">
+                                <div class="balance"><label for="Balance">Balance : </label><span> 450.00</span>
+                                </div>
+                                <div class="Exposure"><label for="Exposure">Exposure : </label><span> 0.00</span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="card c6">
+                    <div class="front">
+                        <section>
+                            <img class="lb_partner_logo" src="/assets/test/p3.png" alt="">
+                            <h4>LotusBook.io</h4>
+                            <a class="a_parnter a_gdid 1" href="javascript:void(0)">Get Demo ID</a>
+                        </section>
+                    </div>
+                    <div class="back">
+                        <div class="header1">
+                            <label for="LotusBook" title="Go To Site">LotusBook.io</label>
+                            <img data-bs-toggle="modal" data-bs-target="#reset" src="/assets/test/setting.png" alt="">
+                        </div>
+                        <section>
+                            <div class="userdetail">
+                                <label for="Username">Username : </label><span> Bookiefirst</span><br>
+                                <label for="Password">Password : </label><span> Bookie123</span>
+                            </div>
+                            <div class="button">
+                                <button title="Deposit" id="btn2">Deposit</button>
+                                <button title="withdrawal">withdrawal</button>
+                            </div>
+                            <div class="balencedetails">
+                                <div class="balance"><label for="Balance">Balance : </label><span> 450.00</span>
+                                </div>
+                                <div class="Exposure"><label for="Exposure">Exposure : </label><span> 0.00</span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="steps" #item3>
+            <h2><q>Process</q> Steps</h2>
+            <div class="process">
+                <label class="buttonnew1">
+                    <button class="btn1"><q>Step</q>
+                        <h1>Step</h1>
+                        <img src="/assets/test/1.png" alt="">
+                    </button>
+                    <h3 class="h1">Message us on our WhatsApp number</h3>
+                </label>
+                <div class="step_arrow">
+                    <img class="sa_img1" src="/assets/test/redarrow.png" alt="">
+                    <img class="sa_img2" src="/assets/test/redarrow.png" alt="">
+                    <img class="sa_img3" src="/assets/test/redarrow.png" alt="">
+                    <img class="sa_img4" src="/assets/test/redarrow.png" alt="">
+                    <img class="sa_img5" src="/assets/test/redarrow.png" alt="">
+                </div>
+                <label class="buttonnew2">
+                    <button class="btn2"><q>Step</q>
+                        <h1>Step</h1>
+                        <img src="/assets/test/2.png" alt="">
+                    </button>
+                    <h3 class="h2">Customer Satisfy guaranteed with all information</h3>
+                </label>
+                <div class="step_arrow">
+                    <img class="sa_img6" src="/assets/test/redarrow.png" alt="">
+                    <img class="sa_img7" src="/assets/test/redarrow.png" alt="">
+                    <img class="sa_img8" src="/assets/test/redarrow.png" alt="">
+                    <img class="sa_img9" src="/assets/test/redarrow.png" alt="">
+                    <img class="sa_img10" src="/assets/test/redarrow.png" alt="">
+                </div>
+                <label class="buttonnew3">
+                    <button class="btn3"><q>Step</q>
+                        <h1>Step</h1>
+                        <img src="/assets/test/3.png" alt="">
+                    </button>
+                    <h3 class="h3">Start depositing & withdrawal instantly</h3>
+                </label>
+                <div class="step_arrow">
+                    <img class="sa_img11" src="/assets/test/redarrow.png" alt="">
+                    <img class="sa_img12" src="/assets/test/redarrow.png" alt="">
+                    <img class="sa_img13" src="/assets/test/redarrow.png" alt="">
+                    <img class="sa_img14" src="/assets/test/redarrow.png" alt="">
+                    <img class="sa_img15" src="/assets/test/redarrow.png" alt="">
+                </div>
+                <label class="buttonnew4">
+                    <button class="btn4"><q>Step</q>
+                        <h1>Step</h1>
+                        <img src="/assets/test/4.png" alt="">
+                    </button>
+                    <h3 class="h4">Earn from your skills</h3>
+                </label>
+            </div>
+            <div class="processsteps">
+                <!-- <h3 class="h1">Message us on our WhatsApp number</h3>
+                <h3 class="h2">Customer Satisfy guaranteed with all information</h3>
+                <h3 class="h3">Start depositing & withdrawal instantly</h3>
+                <h3 class="h4">Earn from your skills</h3> -->
+            </div>
+            <div class="details">
+                <h1 class="head">Laser Book is The Biggest Platform For Providing Online Sports Betting ID's.</h1>
+                <h1>Get Your Betting Id Now. Contact Us On WhatsApp. </h1>
+                <h3 class="deatil">For Any Queries, Emergencies, Feedbacks or Complaints. We Are Here To Help You 24/7
+                    With Our Online
+                    Services.</h3>
+            </div>
+            <div class="whatsapp2">
+                <h1><q>WhatsApp</q> us on</h1>
+                <div class="button">
+                    <button>+91 97XXXXXXXX</button>
+                    <button>+91 97XXXXXXXX</button>
+                    <button>+91 97XXXXXXXX</button>
+                    <button>+91 97XXXXXXXX</button>
+                </div>
+            </div>
+        </div>
+        <div class="video" #item4>
+            <h1><q>Celebs</q> <br>Love Us</h1>
+            <div id="splider">
+                <div class="splide">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <img src="/assets/test/c1.png" style="height: 250px; margin: 0px 13%;" alt="">
+                                <img src="/assets/test/play.png" (click)="openvideo()" alt="" class="play">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="/assets/test/c3.png" style="height: 250px; margin: 0px 13%;" alt="">
+                                <img src="/assets/test/play.png" (click)="openvideo2()" alt="" class="play">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="/assets/test/c2.png" style="height: 250px; margin: 0px 13%;" alt="">
+                                <img src="/assets/test/play.png" (click)="openvideo1()" alt="" class="play">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="/assets/test/c3.png" style="height: 250px; margin: 0px 13%;" alt="">
+                                <img src="/assets/test/play.png" (click)="openvideo2()" alt="" class="play">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="policy" #item5>
+            <h2><q>Why</q> Laser Book</h2>
+            <div class="cardstop">
+                <div class="card1">
+                    <div class="why_icon">
+                        <img src="/assets/test/ic1.png" alt="">
+                    </div>
+                    <div class="why_cnt">
+                        <h4>ONLINE ID</h4>
+                        <p>Get your online cricket/sports id with us and instantly start Playing. Message us to get your
+                            ID now.</p>
+                    </div>
+                </div>
+                <div class="card2">
+                    <div class="why_icon">
+                        <img src="/assets/test/ic2.png" alt="">
+                    </div>
+                    <div class="why_cnt">
+                        <h4>24 /7 SUPPORT</h4>
+                        <p>We have a team of experts who available 24/7 to guide you through our whatsApp chats.</p>
+                    </div>
+                </div>
+                <div class="card3">
+                    <div class="why_icon">
+                        <img src="/assets/test/ic3.png" alt="">
+                    </div>
+                    <div class="why_cnt">
+                        <h4>100% TRUSTED SERVICE</h4>
+                        <p>Transparency and accuracy is the most important for us and for our customer. We deal in the
+                            most transparent way. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="cardsbottom">
+                <div class="card4">
+                    <div class="why_icon">
+                        <img src="/assets/test/ic4.png" alt="">
+                    </div>
+                    <div class="why_cnt">
+                        <h4>INSTANT WITHDRAWAL &amp; REFILL</h4>
+                        <p>Laser Book provides instant service of id withdrawal &amp; refilling with min to max amount.
+                        </p>
+                    </div>
+                </div>
+                <div class="card5">
+                    <div class="why_icon">
+                        <img src="/assets/test/ic5.png" alt="">
+                    </div>
+                    <div class="why_cnt">
+                        <h4>AVAILABLE PAYMENT METHODs</h4>
+                        <p>Multiple methods are available for Paymetns. Customer can pay via Net Banking, Bank Transfer,
+                            Paytm, Google pay, IMPS, PhonePe etc.</p>
+                    </div>
+                </div>
+                <div class="card6">
+                    <div class="why_icon">
+                        <img src="/assets/test/ic6.png" alt="">
+                    </div>
+                    <div class="why_cnt">
+                        <h4>HIGH SECURITY</h4>
+                        <p>Security is our Top priority and hence your data and imformation is safe and is not shared at
+                            any Point!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer" #item6>
+            <div class="logo">
+                <img src="/assets/test/logo.png" alt="">
+            </div>
+            <h3>Get In Touch With Laser Book Customer Care</h3>
+            <p>For Any Queries, Emergencies, Feedbacks or Complaints. We Are Here To Help You 24/7 With Our Online
+                Services.</p>
+            <h2><q>Whatsapp</q> us on</h2>
+            <div class="button">
+                <button>+91 97XXXXXXXX</button>
+                <button>+91 97XXXXXXXX</button>
+                <button>+91 97XXXXXXXX</button>
+                <button>+91 97XXXXXXXX</button>
+            </div>
+            <h3>With Our Step-By-Step Guide For Beginners</h3>
+            <p>We Provide 24/7 Service For Our Customers.</p>
+            <button>Get Started Playing</button>
+            <div class="ul">
+                <li>Home</li>
+                <li>About Us</li>
+                <li>Bond Sites</li>
+                <li>How to Work</li>
+                <li>Celebs love Us</li>
+                <li>Why Laser Book</li>
+                <li>Contact Us</li>
+                <li>Privacy Policy</li>
+                <li>Terms & Conditions</li>
+            </div>
+            <div class="ul_social">
+                <a target="_blank" href="#"><img src="/assets/test/ss1.png" alt=""></a>
+                <a target="_blank" href="#"><img src="/assets/test/ss2.png" alt=""></a>
+                <a target="_blank" href="#"><img src="/assets/test/ss3.png" alt=""></a>
+                <a target="_blank" href="#"><img src="/assets/test/ss4.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+</main>
+<div class="modal fade" id="reset" tabindex="-1" aria-labelledby="resetLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <header>
+                <h1>Exchange Setting</h1>
+                <img src="/assets/test/close.png" alt="" data-bs-dismiss="modal" aria-label="Close" title="Close">
+            </header>
+            <div class="line"></div>
+            <main>
+                <label for="CompanyName">Company Name</label>
+                <button id="btn">RESET PASSWoRD</button>
+                <button>DELETE ID</button>
+            </main>
+        </div>
+    </div>
+</div>

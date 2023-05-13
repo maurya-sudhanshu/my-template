@@ -1,0 +1,144 @@
+<div class="table">
+    <div class="search">
+        <input type="search" class="form-control" name="search" [(ngModel)]="searchText"
+            placeholder="Search here :- Username, Mobile, Referral Code etc">
+    </div>
+    <br>
+    <table>
+        <tr>
+            <th>S.No</th>
+            <th>User name</th>
+            <th>Account Holder Name / Name</th>
+            <th>Account/Phone No/UPI Id</th>
+            <th>IFSC</th>
+            <th>Payment Method Type</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Action</th>
+            <th>Approved/declined By</th>
+        </tr>
+        <tr *ngFor="let arr of data| filter:searchText;let i = index">
+            <td>{{i+1}}</td>
+            <td class="info"><div class="title">{{arr.username }} <img data-title="username : {{arr.username}}
+Account No: {{arr.account_no}}
+IFSC Code: {{arr.ifsc_code}}
+                " width="18px" style="cursor: pointer;" src="/assets/admin/info.png" alt=""></div> </td>
+            <td>{{arr.account_holder_name}}</td>
+            <td>{{arr.accountno_phoneno_upiid}}</td>
+            <td id="ifsc">{{arr.ifsc_code}}</td>
+            <td>{{arr.payment_method_Type}}</td>
+            <td>
+                <button mat-raised-button color="warn" *ngIf="arr.status == 0"
+                    style="padding: 0px 46px;">Pending</button>
+                <button mat-raised-button color="accent" *ngIf="arr.status == 1" style="padding: 0px 20px;">Verified
+                    Account</button>
+            </td>
+            <td>{{arr.date}}</td>
+            <td>
+                <button mat-raised-button data-bs-toggle="modal" (click)="getdatabyid(arr.id)" data-bs-target="#view"
+                    style="padding: 0px 18px;">
+                    <mat-icon>remove_red_eye</mat-icon> View
+                </button>
+                <button mat-raised-button color="accent" *ngIf="arr.status_for_approve == 0" (click)="approved(arr.id)"
+                    class="active">Approve</button>
+                <button mat-raised-button color="accent" *ngIf="arr.status_for_approve == 1"
+                    class="active">Approved</button>
+                <button mat-raised-button color="primary" *ngIf="arr.status_for_decline == 0" (click)="decline(arr.id)"
+                    style="
+                padding: 0px 24px;" data-bs-toggle="modal" data-bs-target="#reason2" class="active">Decline</button>
+                <button mat-raised-button color="primary" *ngIf="arr.status_for_decline == 1"
+                    class="active">Declined</button>
+            </td>
+            <td>
+                <div class="self" *ngIf="arr.approved_or_denied_by == adminuser">
+                    Self
+                </div>
+                <div class="Other" *ngIf="arr.approved_or_denied_by != adminuser">
+                    {{arr.approved_or_denied_by}}
+                </div>
+                <div class="pending" *ngIf="arr.approved_or_denied_by == ''">
+                    Pending
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="view" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="staticBackdropLabel">Bank Details</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table *ngFor="let arr of userdata">
+                    <tr>
+                        <th>User Name</th>
+                        <td>{{arr.username}}</td>
+                    </tr>
+                    <tr>
+                        <th>Account Holder Name</th>
+                        <td>{{arr.account_holder_name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Payment Method</th>
+                        <td>{{arr.payment_method_Type}}</td>
+                    </tr>
+                    <tr>
+                        <th>Account/Phone No</th>
+                        <td>{{arr.accountno_phoneno_upiid}}</td>
+                    </tr>
+                    <tr>
+                        <th>Account Ifsc Code</th>
+                        <td>{{arr.ifsc_code}}</td>
+                    </tr>
+                    <tr>
+                        <th>Bank Name</th>
+                        <td>{{arr.bankname}}</td>
+                    </tr>
+                    <tr>
+                        <th>Bank Accont type</th>
+                        <td>{{arr.account_type}}</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td *ngIf="arr.status == 0">
+                            <label>Pending</label>
+                        </td>
+                        <td *ngIf="arr.status == 1">
+                            <label>Verified Account</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>{{arr.date}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="reason2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="staticBackdropLabel">Write Reason for the Decline</h1>
+                <button type="button" class="btn-close btn-close-white" #close data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="declineform" (ngSubmit)="declined(declineform.value)">
+                    <div class="mb-3">
+                        <label for="reason" class="form-label">Reason</label><br>
+                        <textarea name="reason" formControlName="reason" placeholder="Type reason" id="reason" cols="30"
+                            rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,430 @@
+main {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  .dashboard {
+    img {
+      width: 24px;
+      margin-left: 10px;
+      margin-right: 7px;
+    }
+  }
+  .acountdetail {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    .balance {
+      margin-right: 35px;
+    }
+    .account {
+      cursor: pointer;
+      label {
+        cursor: pointer;
+      }
+      img {
+        width: 22px;
+        margin-right: 5px;
+      }
+    }
+    #manu2:before {
+      content: "";
+      border-bottom: 12px solid #000000;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      position: absolute;
+      top: -12px;
+      right: 25px;
+    }
+    #manu2 {
+      z-index: 1;
+      background-color: black;
+      width: 200px;
+      position: absolute;
+      top: 46px;
+      right: 10px;
+      display: none;
+      border-radius: 2px;
+      padding: 10px 10px 0px;
+      .username {
+        padding: 5px 0px 10px;
+        border-bottom: 1px solid green;
+        img {
+          border-radius: 50%;
+          margin-right: 5px;
+          background-color: rgb(10, 184, 10);
+        }
+        label {
+          text-transform: uppercase;
+        }
+      }
+      .profile {
+        border-bottom: 1px solid green;
+        padding: 8px 0px 8px 5px;
+        font-size: 14px;
+        cursor: pointer;
+        img {
+          margin-right: 5px;
+        }
+        label {
+          cursor: pointer;
+        }
+      }
+      .payment {
+        border-bottom: 1px solid green;
+        padding: 8px 0px 8px 5px;
+        font-size: 14px;
+        cursor: pointer;
+        img {
+          width: 25px;
+          margin-right: 5px;
+          border-radius: 50%;
+        }
+        label {
+          cursor: pointer;
+        }
+      }
+      .profile:hover,
+      .payment:hover,
+      .changepass:hover {
+        background-color: #31413b;
+      }
+      .changepass {
+        border-bottom: 1px solid green;
+        padding: 8px 0px 8px 5px;
+        font-size: 14px;
+        cursor: pointer;
+        label {
+          cursor: pointer;
+        }
+        img {
+          margin-right: 5px;
+        }
+      }
+      .logout {
+        padding: 10px;
+        text-align: center;
+        label {
+          background-color: rgb(51, 170, 51);
+          color: white;
+          padding: 10px 20px;
+          border-radius: 10px;
+          cursor: pointer;
+        }
+        label:hover {
+          background-color: green;
+        }
+      }
+    }
+  }
+}
+.modal {
+  color: #000;
+  .modal-dialog {
+    .modal-content {
+      background-color: #000;
+      box-shadow: 1px 1px 1px 20px rgb(248 81 153 / 5%);
+      .modal-header {
+        background-color: #000;
+        color: whitesmoke;
+      }
+      table {
+        width: 100%;
+        background-color: #000;
+        color: #fff;
+        border-top: none;
+        tr {
+          td {
+            #active {
+              padding: 0 21px;
+            }
+            .dropdown {
+              .btn {
+                font-size: 12px;
+              }
+              ul {
+                font-size: 14px;
+                .botton_border {
+                  border-bottom: 1px solid #0000001f;
+                }
+                li {
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+          .balance {
+            img {
+              cursor: pointer;
+              width: 18px;
+              border: 1px solid #ff4081;
+              border-radius: 50%;
+              padding: 2px;
+            }
+            img:active {
+              box-shadow: 0px 0px 0px 4px #d3859f3f;
+            }
+          }
+          .info {
+            #infodata:before {
+              content: "";
+              border-bottom: 12px solid #000000;
+              border-left: 12px solid transparent;
+              border-right: 12px solid transparent;
+              position: absolute;
+              top: -12px;
+              right: 25px;
+            }
+            #infodata {
+              z-index: 1;
+              background-color: fff;
+              width: 200px;
+              position: absolute;
+              top: 50%;
+              left: 5%;
+              display: none;
+              border-radius: 2px;
+              padding: 10px 10px 0px;
+              .username {
+                padding: 5px 0px 10px;
+                border-bottom: 1px solid green;
+                img {
+                  border-radius: 50%;
+                  margin-right: 5px;
+                  background-color: rgb(10, 184, 10);
+                }
+                label {
+                  text-transform: uppercase;
+                }
+              }
+              .profile {
+                border-bottom: 1px solid green;
+                padding: 8px 0px 8px 5px;
+                font-size: 14px;
+                cursor: pointer;
+                img {
+                  margin-right: 5px;
+                }
+                label {
+                  cursor: pointer;
+                }
+              }
+              .profile:hover,
+              .changepass:hover {
+                background-color: #31413b;
+              }
+              .changepass {
+                border-bottom: 1px solid green;
+                padding: 8px 0px 8px 5px;
+                font-size: 14px;
+                cursor: pointer;
+                label {
+                  cursor: pointer;
+                }
+                img {
+                  margin-right: 5px;
+                }
+              }
+              .logout {
+                padding: 10px;
+                text-align: center;
+                label {
+                  background-color: rgb(51, 170, 51);
+                  color: white;
+                  padding: 10px 20px;
+                  border-radius: 10px;
+                  cursor: pointer;
+                }
+                label:hover {
+                  background-color: green;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.modal2 {
+  .modal-dialog {
+    max-width: 400px;
+    .modal-content {
+      color: #18ce18;
+      box-shadow: 0px 0px 0px 0px rgb(248 81 153 / 5%);
+      background-color: transparent;
+      border: none;
+      .modal-body {
+        .form {
+          form {
+            background-color: black;
+            border: none;
+            border-radius: 0px;
+            padding: 20px;
+            box-shadow: 1px 1px 20px #18ce18;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            .form-control {
+              background-color: #131c13;
+              border: none;
+              border-radius: 0px;
+              color: white;
+              outline: green;
+            }
+            label {
+              color: #18ce18;
+            }
+            .username {
+              input:focus {
+                box-shadow: none;
+              }
+            }
+            .password {
+              margin: 10px 0px;
+              .butt {
+                position: relative;
+                button {
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                }
+                button:focus {
+                  box-shadow: 0 0 0 0 green;
+                }
+              }
+              input:focus {
+                box-shadow: none;
+              }
+            }
+            .logo {
+              display: flex;
+              justify-content: center;
+              #logimg {
+                width: 50%;
+              }
+              #close {
+                position: absolute;
+                top: 22px;
+                right: 20px;
+                cursor: pointer;
+                opacity: 0.8;
+                padding: 3px;
+                border-radius: 5px;
+              }
+              #close:hover {
+                opacity: 1;
+              }
+            }
+            .remenberme {
+              span {
+                color: grey;
+              }
+              input {
+                margin-right: 5px;
+                accent-color: #00ad00;
+              }
+            }
+            .button {
+              button {
+                width: 100%;
+                padding: 12px;
+                font-size: 20px;
+                font-weight: 600;
+                border: none;
+                background-color: #109e10;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.modal3 {
+  .modal-dialog {
+    .modal-content {
+      color: #18ce18;
+      box-shadow: 0px 0px 0px 0px rgb(248 81 153 / 5%);
+      background-color: transparent;
+      border: none;
+      .modal-header {
+        h1 {
+          margin: 0;
+        }
+      }
+      .modal-body {
+        form {
+          background-color: black;
+          border: none;
+          border-radius: 0px;
+          padding: 20px;
+          box-shadow: 1px 1px 20px #18ce18;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          header {
+            text-align: center;
+            margin-bottom: 10px;
+            img {
+              width: 60%;
+            }
+            .close {
+              width: 16px;
+              position: absolute;
+              top: 26px;
+              right: 27px;
+              opacity: 0.8;
+              cursor: pointer;
+            }
+            .close:hover{
+              opacity: 1;
+            }
+          }
+          .form-control {
+            background-color: #131c13;
+            border: none;
+            border-radius: 0px;
+            color: white;
+            outline: green;
+          }
+          label {
+            color: #18ce18;
+          }
+          .old,
+          .new {
+            .butt {
+              position: relative;
+              button {
+                position: absolute;
+                top: 0;
+                padding: 0;
+                background-color: transparent;
+                right: 0;
+                mat-icon {
+                  color: rgb(14, 169, 14);
+                }
+              }
+              button:focus {
+                box-shadow: 0 0 0 0 green;
+              }
+            }
+          }
+          button {
+            padding: 7px;
+            border: none;
+            border-radius: 3px;
+            background: green;
+            color: white;
+            font-weight: 500;
+            opacity: 0.8;
+          }
+          button:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

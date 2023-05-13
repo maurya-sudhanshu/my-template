@@ -1,0 +1,197 @@
+<main>
+    <header>
+        <img src="/assets/test/logo.png" alt="">
+        <h1>Withdarwal Amount</h1>
+        <div class="userdata">
+            <img src="/assets/test/profile.svg" alt="">
+            <li class="nav-item dropdown">
+                <div title="click" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"
+                    class="profile">
+                    <small>Username</small>
+                    <label style="color:white; cursor: pointer;">{{balance}}.00</label>
+                </div>
+                <ul class="dropdown-menu">
+                    <div class="data"></div>
+                    <li><a class="dropdown-item" (click)="history()">Withdarwal History</a></li>
+                    <li><a class="dropdown-item">Withdarwal Statement</a></li>
+                </ul>
+            </li>
+        </div>
+    </header>
+    <div *ngIf="withdrawalpayment" class="main">
+        <button mat-raised-button id="button" (click)="close()"
+            aria-label="Example icon button with a vertical three dot icon">
+            close
+        </button>
+        <div class="header">
+            <span [class.backtransfer]="backtransfer" (click)="bacnk()">
+                Bank Transfer
+            </span>
+            <span [class.backtransfer]="Upidetails" (click)="UPIid()">
+                UPI Details
+            </span>
+            <span [class.backtransfer]="transferbynumber" (click)="transfer()">
+                Transfer By number
+            </span>
+        </div>
+        <div class="main2">
+            <div class="left">
+                <div class="bank" *ngIf="bank">
+                    <div style="cursor: pointer;" class="Add_details" (click)="close()" routerLink="/bankdetails"
+                        *ngIf="imps == ''">+Add</div>
+                    <label class="details" *ngFor="let arr of imps">
+                        <span class="span1">{{arr.accountno_phoneno_upiid}}</span>
+                        <span class="span2">{{arr.ifsc_code}}</span>
+                        <span class="span3">{{arr.account_holder_name}}</span>
+                        <small>{{arr.bankname}}</small>
+                        <input type="radio" name="chackbox"
+                            (click)="bankdataa(arr.id,arr.payment_method_Type,arr.status)" id="">
+                        <span id="varificationpending" *ngIf="arr.status == 0">
+                            Account verification Pending
+                        </span>
+                        <span id="varificationverified" *ngIf="arr.status == 1">
+                            Account verified
+                        </span>
+                    </label>
+                </div>
+                <div class="upi" *ngIf="upi">
+                    <div routerLink="/bankdetails" style="cursor: pointer;" (click)="close()" *ngIf="upidata == ''">+Add
+                    </div>
+                    <label class="details" *ngFor="let arr of upidata">
+                        <span class="span1">{{arr.number}}</span>
+                        <span class="span2">{{arr.name}}</span>
+                        <input type="radio" name="chackbox" (click)="bankdataa1(arr.id,arr.payment_type,arr.status)"
+                            id="">
+                        <!-- <span id="varificationpending" *ngIf="arr.status == 0">
+                            Account verification Pending
+                        </span>
+                        <span id="varificationverified" *ngIf="arr.status == 1">
+                            Account verified
+                        </span> -->
+                    </label>
+                </div>
+                <div class="number" *ngIf="number">
+                    <div routerLink="/bankdetails" style="cursor: pointer;" (click)="close()" *ngIf="numberdata == ''">
+                        +Add</div>
+                    <label class="details" *ngFor="let arr of numberdata">
+                        <span class="span1">{{arr.number}}</span>
+                        <span class="span2">{{arr.name}}</span>
+                        <span class="span3">{{arr.payment_type}}</span>
+                        <input type="radio" name="chackbox" (click)="bankdataa1(arr.id,arr.payment_type,arr.status)"
+                            id="">
+                    </label>
+                </div> 
+            </div>
+            <div class="right">
+                <div class="header">
+                    <label for="amount">Amount</label>
+                    <div class="body">
+                        <label (click)="value(5000)" for="5000">5000</label>
+                        <label (click)="value(1000)" for="1000">1000</label>
+                        <label (click)="value(500)" for="500">500</label>
+                        <label (click)="value(100)" for="100">100</label>
+                    </div>
+                </div>
+                <form [formGroup]="formdata" (ngSubmit)="requestform(formdata.value)" class="alternative" method="post">
+                    <input type="text" hidden formControlName="id" ngModel="{{id}}">
+                    <mat-error style="margin-bottom: 5px;" *ngIf="data">Select Payment Method</mat-error>
+                    <mat-error style="margin-bottom: 5px;" *ngIf="acount">This Account is not verified</mat-error>
+                    <mat-error style="margin-bottom: 5px;" *ngIf="balace">insufficient Balance</mat-error>
+                    <input type="text" required hidden formControlName="accounttype" ngModel="{{payment_method}}">
+                    <input type="text" hidden formControlName="status" ngModel="{{status}}">
+                    <mat-form-field class="my-form-field">
+                        <mat-label>Enter some input</mat-label>
+                        <input required matInput formControlName="amount" onkeypress="return /[0-9]/i.test(event.key)"
+                            (keypress)="numericOnly($event)" (keyup)="clicking()" maxlength="8" ngModel="{{valuedata}}"
+                            min="300" max="10000000" minlength="3" placeholder="Ex. Nougat">
+                        <mat-error *ngIf="amount.errors?.required">You must enter a value</mat-error>
+                        <mat-error *ngIf="amount.errors?.min">You must required 300 minimum </mat-error>
+                        <mat-error *ngIf="amount.errors?.max">You must required 10000000 maximum </mat-error>
+                    </mat-form-field>
+                    <button mat-raised-button>Submit</button>
+                </form>
+                <div class="timer">
+                    <countdown [config]="{leftTime: 60*60*24}"></countdown>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="withdrawalhistory" class="main2nd">
+       <div class="navdata"><mat-icon id="home" title="Home" (click)="home()" aria-hidden="false" aria-label="Example home icon">home</mat-icon> <mat-icon>keyboard_arrow_right</mat-icon> <h3>Withdrawal History</h3></div>
+        <header>
+            <div class="status">
+                <label for="Status">Status :-</label>
+                <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button checked (change)="applyFilterall()" value="All">All</mat-radio-button>
+                    <mat-radio-button (change)="applyFilter('Pending')" value="Pending">Pending</mat-radio-button>
+                    <mat-radio-button (change)="applyFilter('Cencelled')" value="Cancelled">Cancelled</mat-radio-button>
+                    <mat-radio-button (change)="applyFilter('Success')" value="Approved">Approved</mat-radio-button>
+                    <mat-radio-button (change)="applyFilter('Declined')" value="Decliend">Declined</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div class="date alternative2">
+                <form [formGroup]="range" (ngSubmit)="rangedata()" method="post">
+                <label id="label" for="Status">Date Range :-</label>
+                <mat-form-field class="my-form-field">
+                    <mat-label>Enter a date range</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                        <input matStartDate formControlName="start" style="color:rgb(163, 179, 213);" placeholder="Start date">
+                        <input matEndDate formControlName="end" style="color:rgb(163, 179, 213);" placeholder="End date">
+                    </mat-date-range-input>
+                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+                <button id="buttonsearch" mat-raised-button color="accent" type="submit">Search</button>
+            </form>
+            </div>
+            <div class="button">
+                <button id="buttonsearch" mat-raised-button color="accent">Search</button>
+            </div>
+        </header>
+
+        <body>
+          <table mat-table width="100%" [dataSource]="listData" class="alternative">
+
+                <ng-container matColumnDef="SERIAL_NO">
+                    <th mat-header-cell *matHeaderCellDef>S No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.SERIAL_NO}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="payment_method">
+                    <th mat-header-cell *matHeaderCellDef> Payment </th>
+                    <td mat-cell *matCellDef="let element"> {{element.payment_method}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="payment_status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element"><button mat-button *ngIf="element.payment_status == 'Pending'">Cencel</button><label for="penfing" *ngIf="element.payment_status != 'Pending'">{{element.payment_status}}</label> </td>
+                </ng-container>
+
+                <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef> Amount </th>
+                    <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef> Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="reason">
+                    <th mat-header-cell *matHeaderCellDef> Reason </th>
+                    <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5]" [pageSize]="5"></mat-paginator>
+        </body>
+    </div>
+</main>

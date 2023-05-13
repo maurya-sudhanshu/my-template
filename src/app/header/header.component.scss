@@ -1,0 +1,158 @@
+* {
+  font-family: "Josefin Sans", sans-serif;
+  padding: 0;
+  margin: 0;
+  font-weight: 700;
+}
+.background {
+  z-index: 1000;
+  background-color: rgb(0 0 0 / 24%);
+  position: fixed;
+  width: 100%;
+  div {
+    .login {
+      position: fixed;
+      right: -12px;
+      top: 200px;
+      z-index: 95;
+      width: 150px;
+      transition: right 1s;
+    }
+    .register {
+      position: fixed;
+      right: -12px;
+      top: 250px;
+      z-index: 95;
+      width: 150px;
+      transition: right 1s;
+    }
+    img {
+      cursor: pointer;
+    }
+  }
+  .login_change {
+    .login {
+      right: -97px;
+    }
+    .register {
+      right: -97px;
+    }
+  }
+  header {
+    color: black;
+    background-color: transparent;
+    ul {
+      .roww {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-line-pack: end;
+        align-content: flex-end;
+        .active a::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 65%;
+          width: 100%;
+          background-color: red;
+          height: 2px;
+          -webkit-transition: all 0.2s linear;
+          transition: all 0.2s linear;
+        }
+
+        #li1 {
+          margin-right: 20px;
+        }
+        #li2 {
+          margin-left: 20px;
+        }
+
+        li {
+          list-style: none;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          a::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 65%;
+            width: 0;
+            background-color: red;
+            height: 2px;
+            -webkit-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+          }
+          a {
+            height: 103px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            position: relative;
+            text-transform: uppercase;
+          }
+          a:hover::before {
+            width: 100%;
+          }
+        }
+        img {
+          margin-top: 2px;
+          height: 70px;
+          transition: height 1s;
+        }
+      }
+      li ul {
+        background: white;
+        visibility: hidden;
+        opacity: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+        min-width: 5rem;
+        position: absolute;
+        margin-top: 12rem;
+        cursor: pointer;
+      }
+      li:hover > ul,
+      li ul:hover {
+        visibility: visible;
+        opacity: 1;
+      }
+      li ul li {
+        clear: both;
+        width: 100%;
+      }
+    }
+    .last {
+      padding-bottom: 7px;
+    }
+    .first {
+      padding-top: 7px;
+    }
+    .login{
+    }
+  }
+  .header_change {
+    ul {
+      margin-top: -10px;
+      .roww {
+        img {
+          height: 50px;
+        }
+      }
+    }
+  }
+}

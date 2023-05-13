@@ -1,0 +1,81 @@
+<div class="table">
+    <div class="search">
+        <input type="search" class="form-control" name="search" [(ngModel)]="searchText"
+            placeholder="Search here :- Username, Mobile, Referral Code etc">
+    </div>
+    <br>
+    <table>
+        <tr>
+            <th>S.No</th>
+            <th>User name</th>
+            <th>Name</th>
+            <th>Phone No/UPI Id</th>
+            <th>Payment Method Type</th>
+            <th>Date</th>
+            <th>Action</th>
+            <th>Which Admin User</th>
+        </tr>
+        <tr *ngFor="let arr of data| filter:searchText;let i = index">
+            <td>{{i+1}}</td>
+            <td class="info">
+                <div class="title">{{arr.username }} <img data-title="username : {{arr.username}}
+Account No: {{arr.number}}
+                " width="18px" style="cursor: pointer;" src="/assets/admin/info.png" alt=""></div>
+            </td>
+            <td>{{arr.name}}</td>
+            <td>{{arr.number}}</td>
+            <td>{{arr.payment_type}}</td>
+            <td>{{arr.date}}</td>
+            <td>
+                <button mat-raised-button data-bs-toggle="modal" (click)="getdatabyid(arr.id)" data-bs-target="#view"
+                    style="padding: 0px 18px;">
+                    <mat-icon>remove_red_eye</mat-icon> View
+                </button>
+            </td>
+            <td>
+              {{arr.which_admin_user}}
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="view" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="staticBackdropLabel">Bank Details</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table *ngFor="let arr of userdata">
+                    <tr>
+                        <th>User Name</th>
+                        <td>{{arr.username}}</td>
+                    </tr>
+                    <tr>
+                        <th>Account Holder Name</th>
+                        <td>{{arr.name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Payment Method</th>
+                        <td>{{arr.payment_type}}</td>
+                    </tr>
+                    <tr>
+                        <th>UPI Id/Phone No</th>
+                        <td>{{arr.number}}</td>
+                    </tr>
+                    <tr>
+                        <th>Which Admin User</th>
+                        <td>{{arr.which_admin_user}}</td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>{{arr.date}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

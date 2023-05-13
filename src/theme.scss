@@ -1,0 +1,65 @@
+@import "../node_modules/@angular/material/theming";
+@include mat-core();
+
+
+.alternative{
+$my-primary: mat-palette($mat-teal, 50);
+$my-accent: mat-palette($mat-light-green, 50);
+
+$my-theme: mat-light-theme($my-primary, $my-accent);
+
+@include angular-material-theme($my-theme);
+/** Overrides underline color **/
+.my-form-field.mat-form-field-appearance-legacy .mat-form-field-underline,
+.my-form-field.mat-form-field-appearance-legacy .mat-form-field-ripple,
+.my-form-field.mat-form-field-appearance-legacy.mat-focused
+	.mat-form-field-underline,
+.my-form-field.mat-form-field-appearance-legacy.mat-focused
+	.mat-form-field-ripple {
+	background-color: white;
+}
+
+/** Overrides label color **/
+.my-form-field.mat-form-field-appearance-legacy .mat-form-field-label,
+.my-form-field.mat-form-field-appearance-legacy.mat-focused
+.mat-form-field-label {
+	color: white;
+}
+
+/** Overrides caret & text color **/
+.my-form-field.mat-form-field-appearance-legacy .mat-input-element {
+	caret-color: white;
+  color: white;
+}
+}
+
+.alternative2{
+$my-primary: mat-palette($mat-teal, 50);
+$my-accent: mat-palette($mat-light-green, 50);
+
+$my-theme: mat-light-theme($my-primary, $my-accent);
+
+@include angular-material-theme($my-theme);
+/** Overrides underline color **/
+.my-form-field.mat-form-field-appearance-legacy .mat-form-field-underline,
+.my-form-field.mat-form-field-appearance-legacy .mat-form-field-ripple,
+.my-form-field.mat-form-field-appearance-legacy.mat-focused
+	.mat-form-field-underline,
+.my-form-field.mat-form-field-appearance-legacy.mat-focused
+	.mat-form-field-ripple {
+	background-color: rgb(188, 219, 229);
+}
+
+/** Overrides label color **/
+.my-form-field.mat-form-field-appearance-legacy .mat-form-field-label,
+.my-form-field.mat-form-field-appearance-legacy.mat-focused
+.mat-form-field-label {
+	color: rgb(188, 219, 229);
+}
+
+/** Overrides caret & text color **/
+.my-form-field.mat-form-field-appearance-legacy .mat-input-element {
+	caret-color: rgb(188, 219, 229);
+  color: rgb(188, 219, 229);
+}
+}

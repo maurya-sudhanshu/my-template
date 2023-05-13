@@ -1,0 +1,16 @@
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit(userForm.value)" class="alternative">
+    <mat-form-field>
+        <mat-label>Enter your name</mat-label>
+        <input matInput placeholder="Enter Your Name" minlength="5" formControlName="name" required>
+        <mat-error *ngIf="name.errors?.minlength">
+            Minimum 5 Character required
+        </mat-error>
+        <mat-error *ngIf="name.errors?.required">
+           Field is required
+        </mat-error>
+      </mat-form-field>
+      <button type="submit">submit</button>
+ </form> 
+ dfsdfsg
+ <div class="data"></div>
+ 

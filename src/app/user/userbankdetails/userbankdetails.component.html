@@ -1,0 +1,432 @@
+<main>
+    <header>
+        <img title="back" routerLink="/main" src="/assets/admin/back.png" alt="">
+        Withdrawal Details
+    </header>
+    <div class="main">
+        <div class="header">Username<br>9794368090</div>
+        <div class="IMPS">
+            <div class="header2">
+                <div class="logo"><button><img src="/assets/admin/bank2.png" alt=""></button> Bank Details</div>
+                <button *ngIf="addIMPS" mat-raised-button data-bs-toggle="modal" data-bs-target="#IMPS">Add New</button>
+                <button *ngIf="rightIMPS" (click)="reght()" class="button1" mat-icon-button>
+                    <svg
+                        style="width: 20px; margin-left: 4px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                        <path
+                            d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z" />
+                    </svg></button>
+                <button *ngIf="downIMPS" (click)="dwon()" class="button1" mat-icon-button><svg
+                        style="width: 20px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                        <path
+                            d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
+                    </svg></button>
+            </div>
+            <div *ngIf="bank" id="bank" class="bank">
+                <div class="bankdetailsss" *ngFor="let arr of bankdata">
+                    <div class="nameandbank">
+                        <label>{{arr.bankname}}</label>
+                        <label><span *ngIf="arr.status == 0 && arr.bankname != null">Pending</span>
+                            <svg *ngIf="right3" (click)="click2(arr.id)" data-bs-toggle="modal"
+                                data-bs-target="#showdataIMPS" style="width: 16px; margin-left: 10px;" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 256 512">
+                                <path
+                                    d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z" />
+                            </svg>
+                            <svg *ngIf="down3" style="width: 20px; margin-left: 10px;" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 320 512">
+                                <path
+                                    d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
+                            </svg>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+            <div *ngIf="buttonIMPS" id="button" class="button">
+                <button mat-raised-button data-bs-toggle="modal" data-bs-target="#IMPS">Add New</button>
+            </div>
+        </div>
+        <div class="paytm">
+            <div class="header2">
+                <div class="logo"><img src="/assets/admin/paytm.svg" alt=""> Paytm Wallet</div>
+                <button mat-raised-button data-bs-toggle="modal" *ngIf="addpaytm" data-bs-target="#paytm">Add
+                    New</button>
+                <button *ngIf="rightpaytm" (click)="reghtpaytm()" class="button1" mat-icon-button><svg
+                        style="width: 20px; margin-left: 4px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                        <path
+                            d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z" />
+                    </svg></button>
+                <button *ngIf="downpaytm" (click)="dwonpaytm()" class="button1" mat-icon-button><svg
+                        style="width: 20px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                        <path
+                            d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
+                    </svg></button>
+            </div>
+            <div *ngIf="paytmdata" class="data alternative">
+                <mat-form-field class="my-form-field" *ngFor="let arr of paytm">
+                    <mat-label>{{arr.name}}</mat-label>
+                    <input matInput disabled value="{{arr.number}}" placeholder="Bank Name">
+                    <mat-icon (click)="delete2(arr.id)" matSuffix>delete</mat-icon>
+                </mat-form-field>
+            </div>
+            <div *ngIf="buttonpaytm" class="button">
+                <button mat-raised-button data-bs-toggle="modal" data-bs-target="#paytm">Add New</button>
+            </div>
+        </div>
+        <div class="phone-pe">
+            <div class="header2">
+                <div class="logo"><img src="/assets/admin/phonepe.svg" alt=""> Phone Pe</div>
+                <button mat-raised-button data-bs-toggle="modal" *ngIf="addphonepe" data-bs-target="#phonepe">Add New</button>
+                <button *ngIf="rightphonepe" (click)="reghtphonepe()" class="button1" mat-icon-button><svg
+                    style="width: 20px; margin-left: 4px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                    <path
+                        d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z" />
+                </svg></button>
+            <button *ngIf="downphonepe" (click)="dwonphonepe()" class="button1" mat-icon-button><svg
+                    style="width: 20px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                    <path
+                        d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
+                </svg></button>
+            </div>
+            <div *ngIf="phonepedata" class="data alternative">
+                <mat-form-field class="my-form-field" *ngFor="let arr of phonepe">
+                    <mat-label>{{arr.name}}</mat-label>
+                    <input matInput disabled value="{{arr.number}}" placeholder="Bank Name">
+                    <mat-icon (click)="delete2(arr.id)" matSuffix>delete</mat-icon>
+                </mat-form-field>
+            </div>
+            <div *ngIf="buttonphonepe" class="button">
+                <button mat-raised-button data-bs-toggle="modal" data-bs-target="#phonepe">Add New</button>
+            </div>
+        </div>
+        <div class="google-pay">
+            <div class="header2">
+                <div class="logo"><img src="/assets/admin/gpay.svg" alt=""> Google Pay</div>
+                <button mat-raised-button data-bs-toggle="modal" *ngIf="addgooglepay" data-bs-target="#google-pay">Add New</button>
+                <button *ngIf="rightgooglepay" (click)="reghtgooglepay()" class="button1" mat-icon-button><svg
+                    style="width: 20px; margin-left: 4px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                    <path
+                        d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z" />
+                </svg></button>
+            <button *ngIf="downgooglepay" (click)="dwongooglepay()" class="button1" mat-icon-button><svg
+                    style="width: 20px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                    <path
+                        d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
+                </svg></button>
+            </div>
+            <div *ngIf="googlepaydata" class="data alternative">
+                <mat-form-field class="my-form-field" *ngFor="let arr of googlepay">
+                    <mat-label>{{arr.name}}</mat-label>
+                    <input matInput disabled value="{{arr.number}}" placeholder="Bank Name">
+                    <mat-icon (click)="delete2(arr.id)" matSuffix>delete</mat-icon>
+                </mat-form-field>
+            </div>
+            <div *ngIf="buttongooglepay" class="button">
+                <button mat-raised-button data-bs-toggle="modal" data-bs-target="#google-pay">Add New</button>
+            </div>
+        </div>
+        <div class="upi">
+            <div class="header2">
+                <div class="logo"><img src="/assets/admin/upi.png" alt=""> UPI</div>
+                <button mat-raised-button data-bs-toggle="modal" *ngIf="addupi" data-bs-target="#UPI">Add New</button>
+                <button *ngIf="rightupi" (click)="reghtupi()" class="button1" mat-icon-button><svg
+                    style="width: 20px; margin-left: 4px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                    <path
+                        d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z" />
+                </svg></button>
+            <button *ngIf="downupi" (click)="dwonupi()" class="button1" mat-icon-button><svg
+                    style="width: 20px; margin-top: 4px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                    <path
+                        d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
+                </svg></button>
+            </div>
+            <div *ngIf="upidata" class="data alternative">
+                <mat-form-field class="my-form-field" *ngFor="let arr of upi">
+                    <mat-label>{{arr.name}}</mat-label>
+                    <input matInput disabled value="{{arr.number}}" placeholder="Bank Name">
+                    <mat-icon (click)="delete2(arr.id)" matSuffix>delete</mat-icon>
+                </mat-form-field>
+            </div>
+            <div *ngIf="buttonupi" class="button">
+                <button mat-raised-button data-bs-toggle="modal" data-bs-target="#UPI">Add New</button>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Modal -->
+<div class="modal alternative fade" id="IMPS" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="h">
+                    <div class="body">
+                        <form method="post" [formGroup]="formIMPS" (ngSubmit)="submitimps(formIMPS.value)">
+                            <img src="/assets/test/close.png" data-bs-dismiss="modal" #closeIMPS aria-label="Close"
+                                alt="">
+                            <div class="header2">
+                                <h1>Add Your Bank Account</h1>
+                                <small>Adding Bank Details is mandatory for processing withdrawals.</small>
+                            </div>
+                            <div class="holdername">
+                                <mat-form-field class="my-form-field">
+                                    <mat-label>Account Holder Name</mat-label>
+                                    <input matInput required formControlName="name"
+                                        onkeypress="return /[a-zA-Z ]/i.test(event.key)"
+                                        placeholder="Account Holder Name">
+                                    <mat-error *ngIf="holdername.errors?.required">You must enter a value</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="bankname">
+                                <mat-form-field class="my-form-field">
+                                    <mat-label>Bank Name</mat-label>
+                                    <input matInput required formControlName="bankname"
+                                        onkeypress="return /[a-zA-Z ]/i.test(event.key)" placeholder="Bank Name">
+                                    <mat-error *ngIf="bankname.errors?.required">You must enter a value</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="accountnumber">
+                                <mat-form-field class="my-form-field">
+                                    <mat-label>Account Number</mat-label>
+                                    <input matInput type="number" required (keypress)="numericOnly($event)"
+                                        formControlName="anpnuodetails" placeholder="Account Number">
+                                    <mat-error *ngIf="accountnumber.errors?.required">You must enter a value</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ifsc">
+                                <mat-form-field class="my-form-field">
+                                    <mat-label>IFSC</mat-label>
+                                    <input matInput required formControlName="ifsc" maxlength="11"
+                                        onkeypress="return /[a-zA-Z0-9]/i.test(event.key)"
+                                        pattern="^[A-Za-z]{4}0[A-Z0-9a-z]{6}$" placeholder="IFSC">
+                                    <mat-error *ngIf="ifsc.errors?.required">You must enter a value</mat-error>
+                                    <mat-error *ngIf="ifsc.errors?.pattern">Ifsc Code is not valid </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="acounttype">
+                                <mat-radio-group formControlName="accounttype" aria-label="Select an option">
+                                    <mat-radio-button value="Saving">Saving</mat-radio-button>
+                                    <mat-radio-button value="Current">Current</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <input type="text" formControlName="accountty" hidden value="IMPS">
+                            <button mat-raised-button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal alternative fade" id="paytm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="h">
+                    <div class="body">
+                        <form method="post" [formGroup]="formpaytm" (ngSubmit)="submitpaytm(formpaytm.value)">
+                            <img src="/assets/test/close.png" data-bs-dismiss="modal" #closepaytm aria-label="Close"
+                                alt="">
+                            <div class="header2">
+                                <h1>Add New Paytm Wallet Number</h1>
+                            </div>
+                            <div class="name">
+                                <mat-form-field class="my-form-field">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput required formControlName="name"
+                                        onkeypress="return /[a-zA-Z ]/i.test(event.key)" placeholder="Name">
+                                    <mat-error *ngIf="paytmname.errors?.required">You must enter a value</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="number">
+                                <mat-form-field class="my-form-field">
+                                    <mat-label>Paytm Number</mat-label>
+                                    <input matInput required formControlName="anpnuodetails" maxlength="10"
+                                        (keypress)="numericOnly($event)" onkeypress="return /[0-9]/i.test(event.key)"
+                                        pattern="^[1-9]{1}[0-9]{9}$" placeholder="Phone Number">
+                                    <mat-error *ngIf="paytmnumber.errors?.required">You must enter a value</mat-error>
+                                    <mat-error *ngIf="paytmnumber.errors?.pattern">Paytm number is not valid
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <input type="text" formControlName="accountty" hidden value="Paytm">
+                            <button mat-raised-button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal alternative fade" id="phonepe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="h">
+                    <div class="body">
+                        <form method="post" [formGroup]="formphonepe" (ngSubmit)="submitphonepe(formphonepe.value)">
+                            <img src="/assets/test/close.png" data-bs-dismiss="modal" #closephonepe aria-label="Close"
+                                alt="">
+                            <div class="header2">
+                                <h1>
+                                    Add New PhonePe Number</h1>
+                            </div>
+                            <div class="name">
+                                <mat-form-field class="my-form-field">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput required formControlName="name"
+                                        onkeypress="return /[a-zA-Z ]/i.test(event.key)" placeholder="Name">
+                                    <mat-error *ngIf="phonepename.errors?.required">You must enter a value</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="number">
+                                <mat-form-field class="my-form-field">
+                                    <mat-label>Phone Pe Number</mat-label>
+                                    <input matInput required formControlName="anpnuodetails"
+                                        (keypress)="numericOnly($event)" maxlength="10"
+                                        onkeypress="return /[0-9]/i.test(event.key)" pattern="^[1-9]{1}[0-9]{9}$"
+                                        placeholder="Phone Pe Number">
+                                    <mat-error *ngIf="phonepenumber.errors?.required">You must enter a value</mat-error>
+                                    <mat-error *ngIf="phonepenumber.errors?.pattern">Phone Pe number is not valid
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <input type="text" formControlName="accountty" hidden value="Phone Pe">
+                            <button mat-raised-button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal alternative fade" id="google-pay" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="h">
+                    <div class="body">
+                        <form method="post" [formGroup]="formgooglepay"
+                            (ngSubmit)="submitgooglepay(formgooglepay.value)">
+                            <img src="/assets/test/close.png" data-bs-dismiss="modal" #closegooglepay aria-label="Close"
+                                alt="">
+                            <div class="header2">
+                                <h1>Add New Google Pay Number</h1>
+                            </div>
+                            <div class="name">
+                                <mat-form-field class="my-form-field">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput required formControlName="name"
+                                        onkeypress="return /[a-zA-Z ]/i.test(event.key)" placeholder="Name">
+                                    <mat-error *ngIf="googlepayname.errors?.required">You must enter a value</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="number">
+                                <mat-form-field class="my-form-field">
+                                    <mat-label>Google Pay Number</mat-label>
+                                    <input matInput required formControlName="anpnuodetails"
+                                        (keypress)="numericOnly($event)" maxlength="10"
+                                        onkeypress="return /[0-9]/i.test(event.key)" pattern="^[1-9]{1}[0-9]{9}$"
+                                        placeholder="Google Pay Number">
+                                    <mat-error *ngIf="googlepaynumber.errors?.required">You must enter a value
+                                    </mat-error>
+                                    <mat-error *ngIf="googlepaynumber.errors?.pattern">Google Pay number is not valid
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <input type="text" formControlName="accountty" hidden value="Google Pay">
+                            <button mat-raised-button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal alternative fade" id="UPI" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="h">
+                    <div class="body">
+                        <form method="post" [formGroup]="formupiid" (ngSubmit)="submitUPI(formupiid.value)">
+                            <img src="/assets/test/close.png" data-bs-dismiss="modal" #closeUPI aria-label="Close"
+                                alt="">
+                            <div class="header2">
+                                <h1>Add New UPI Id</h1>
+                            </div>
+                            <div class="name">
+                                <mat-form-field class="my-form-field">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput required formControlName="name"
+                                        onkeypress="return /[a-zA-Z ]/i.test(event.key)" placeholder="Name">
+                                    <mat-error *ngIf="UPIname.errors?.required">You must enter a value</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="number">
+                                <mat-form-field class="my-form-field">
+                                    <mat-label>UPI ID</mat-label>
+                                    <input matInput required formControlName="anpnuodetails"
+                                        onkeypress="return /[0-9A-Za-z@]/i.test(event.key)"
+                                        pattern="^[a-zA-Z0-9_]{3,}@[a-zA-Z]{3,}$" placeholder="Upi ID">
+                                    <mat-error *ngIf="upiid.errors?.required">You must enter a value</mat-error>
+                                    <mat-error *ngIf="upiid.errors?.pattern">UPI Id is not valid example -
+                                        XXXXXXXXXX@upi</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <input type="text" formControlName="accountty" hidden value="UPI Id">
+                            <button mat-raised-button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="showdataIMPS" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="/assets/test/close.png" alt="" data-bs-dismiss="modal" #closeshowdata (click)="click3()"
+                    aria-label="Close">
+                <form class="alternative" *ngFor="let arr of bankdatabyid">
+                    <div class="holdername">
+                        <mat-form-field class="my-form-field">
+                            <mat-label>Account Holder Name</mat-label>
+                            <input disabled value="{{arr.account_holder_name}}" matInput
+                                placeholder="Account Holder Name">
+                        </mat-form-field>
+                    </div>
+                    <div class="bankname">
+                        <mat-form-field class="my-form-field">
+                            <mat-label>Bank Name</mat-label>
+                            <input matInput disabled value="{{arr.bankname}}" placeholder="Bank Name">
+                        </mat-form-field>
+                    </div>
+                    <div class="accountnumber">
+                        <mat-form-field class="my-form-field">
+                            <mat-label>Account Number</mat-label>
+                            <input matInput disabled value="{{arr.accountno_phoneno_upiid}}"
+                                placeholder="Account Number">
+                        </mat-form-field>
+                    </div>
+                    <div class="ifsc">
+                        <mat-form-field class="my-form-field">
+                            <mat-label>IFSC</mat-label>
+                            <input matInput disabled value="{{arr.ifsc_code}}" placeholder="IFSC">
+                        </mat-form-field>
+                    </div>
+                    <div class="acounttype">
+                        <mat-form-field class="my-form-field">
+                            <mat-label>Account type</mat-label>
+                            <input matInput disabled value="{{arr.account_type}}" placeholder="Account type">
+                        </mat-form-field>
+                    </div>
+                    <div class="butt">
+                        <button mat-raised-button type="button" (click)="delete(arr.id)">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

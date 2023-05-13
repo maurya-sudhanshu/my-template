@@ -1,0 +1,27 @@
+<div class="background">
+    <div [class.login_change]="login_varible" *ngIf="username == null">
+      <img (click)="login()" class="login" src="/assets/img/login.png" alt="">
+      <img (click)="register()" class="register" src="/assets/img/register.png" alt="">
+    </div>
+    <header [class.header_change]="header_varible" id="topheader">
+    <ul>
+      <div class="roww">
+      <li id="li1" class="active"><a>HOME</a></li>
+      <li id="li1"><a>SERVICE</a>
+      <ul class="dropdwon sub-menu">
+        <div>
+        <li class="first">Sub Menu</li>
+        <li>Sub Menu</li>
+        <li>Sub Menu hom sdfsdfsdf</li>
+        <li class="last">Sub Menu</li>
+      </div>
+      </ul>
+      </li>
+      <img src="/assets/test/logo.png" id="logimg" alt="">
+      <li id="li2"><a >BLOG</a></li>
+      <li (click)="clear()" id="li2"><a >ABOUT</a></li>
+    </div>
+    </ul>
+    <!-- <div class="login"><i class="fa fa-user" aria-hidden="true"></i>hadfh </div> -->
+    </header>
+    </div>
